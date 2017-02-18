@@ -6,20 +6,26 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
         <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_postfix %} | Wagtail Demo{% endblock %}</title>
 
         <meta name="description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}">
 
         {# External stylesheets #}
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+        <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet">
 
         {# Local static assets such as css, images and javascrpt should be stored at [yourapp]/static/[yourapp]/... #}
         {% compress css %}
             {# Custom stylesheets #}
             {# SCSS compilation relies on django compressor #}
-            <link rel="stylesheet" type="text/x-scss" href="{% static "app/css/main.scss" %}" />
+            <link rel="stylesheet" href="{% static 'app/5grid/core.css' %}">
+            <link rel="stylesheet" href="{% static 'app/5grid/core-desktop.css' %}">
+            <link rel="stylesheet" href="{% static 'app/5grid/core-1200px.css' %}">
+            <link rel="stylesheet" href="{% static 'app/5grid/core-noscript.css' %}">
+            <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+            <link rel="stylesheet" href="{% static 'app/css/style-desktop.css' %}">
         {% endcompress %}
 
         {% block extra_css %}{% endblock %} {# Override this block in individual templates in order to add stylesheets on a template by template basis #}
@@ -48,42 +54,115 @@
     <body class="{% block body_class %}{% endblock %}"> {# Override this block to set custom body classes on a template by template basis #}
 
         {% wagtailuserbar %}
+        <div id="header-wrapper">
+            <div class="5grid-layout">
+                {% block menu %}
+                    {% get_site_root as site_root %}
+                    {% top_menu parent=site_root calling_page=self %}
+                {% endblock %}
+            </div>
+        </div>
 
-        {% block menu %}
-            {% get_site_root as site_root %}
-            {% top_menu parent=site_root calling_page=self %}
-        {% endblock %}
-
-        <div class="main container">
-
-            {% breadcrumbs %}
-
-            {% block heading %}
-                <div class="page-header">
-                    <h1>{{ self.title }}</h1>
-                </div>
-            {% endblock %}
-
-            {% block content %}{% endblock %}
-
-            {% include 'app/includes/prev_next.html' %}
-
+        <div id="main-wrapper">
+            <div class="5grid-layout">
+                {% block content %}{% endblock %}
+                {% include 'app/includes/prev_next.html' %}
+            </div>
         </div>
 
         {% adverts %}
 
+        <div id="footer-wrapper">
+          <section id="footer" class="5grid-layout">
+            <div class="row">
+              <div class="4u">
+                <section>
+                  <header>
+                    <h2>Tempus consequat</h2>
+                  </header>
+                  <ul class="divided">
+                    <li><a href="#">Lorem ipsum dolor sit amet sit veroeros</a></li>
+                    <li><a href="#">Sed et blandit consequat sed tlorem blandit</a></li>
+                    <li><a href="#">Adipiscing feugiat phasellus sed tempus</a></li>
+                    <li><a href="#">Hendrerit tortor vitae mattis tempor sapien</a></li>
+                    <li><a href="#">Sem feugiat sapien id suscipit magna felis nec</a></li>
+                    <li><a href="#">Elit class aptent taciti sociosqu ad litora</a></li>
+                  </ul>
+                </section>
+              </div>
+              <div class="4u">
+                <section>
+                  <header>
+                    <h2>Ipsum et phasellus</h2>
+                  </header>
+                  <ul class="divided">
+                    <li><a href="#">Lorem ipsum dolor sit amet sit veroeros</a></li>
+                    <li><a href="#">Sed et blandit consequat sed tlorem blandit</a></li>
+                    <li><a href="#">Adipiscing feugiat phasellus sed tempus</a></li>
+                    <li><a href="#">Hendrerit tortor vitae mattis tempor sapien</a></li>
+                    <li><a href="#">Sem feugiat sapien id suscipit magna felis nec</a></li>
+                    <li><a href="#">Elit class aptent taciti sociosqu ad litora</a></li>
+                  </ul>
+                </section>
+              </div>
+              <div class="4u">
+                <section>
+                  <header>
+                    <h2>Vitae tempor lorem</h2>
+                  </header>
+                  <ul class="social">
+                    <li class="facebook"><a href="#" class="icon48 icon48-1">Facebook</a></li>
+                    <li class="twitter"><a href="#" class="icon48 icon48-2">Twitter</a></li>
+                    <li class="dribbble"><a href="#" class="icon48 icon48-3">Dribbble</a></li>
+                    <li class="linkedin"><a href="#" class="icon48 icon48-4">LinkedIn</a></li>
+                    <li class="tumblr"><a href="#" class="icon48 icon48-5">Tumblr</a></li>
+                    <li class="googleplus"><a href="#" class="icon48 icon48-6">Google+</a></li>
+                  </ul>
+                  <ul class="contact">
+                    <li>
+                      <h3>Address</h3>
+                      <p> Untitled Incorporated<br>
+                        1234 Somewhere Road Suite #5432<br>
+                        Nashville, TN 00000-0000 </p>
+                    </li>
+                    <li>
+                      <h3>Mail</h3>
+                      <p><a href="#">someone@untitled.tld</a></p>
+                    </li>
+                    <li>
+                      <h3>Phone</h3>
+                      <p>(800) 000-0000</p>
+                    </li>
+                  </ul>
+                </section>
+              </div>
+            </div>
+            <div class="row">
+              <div class="12u">
+                <div id="copyright">
+                  <ul class="links">
+                    <li>&copy; Untitled </li>
+                    <li>Images: <a href="http://dreametrydoodle.com/">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
+                    <li>Design: <a href="http://html5up.net">HTML5 Up!</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
         {# External javascript #}
         <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-migrate-1.0.0.js"></script>
 
         {% compress js %}
-            <script src="{% static "app/js/vendor/fluidvids.js" %}"></script>
+            <script src="{% static "app/5grid/init.js" %}"></script>
+            <script src="{% static "app/js/jquery.dropotron-1.2.js" %}"></script>
             {# Custom javascript #}
-            {# Local static assets such as css, images and javascrpt should be stored at [yourapp]/static/[yourapp]/... #}
             <script src="{% static "app/js/main.js" %}"></script>
         {% endcompress %}
 
         {% block extra_js %}{% endblock %} {# Override this block in individual templates in order to add javascript on a template by template basis #}
-        
+
     </body>
 </html>

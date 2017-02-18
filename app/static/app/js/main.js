@@ -1,7 +1,13 @@
-$(document).ready(function(){
-    // Initializes tooltips
-    $('[title]').tooltip({container: 'body'});
+_5grid.ready(function() {
 
-    //Apply img-thumbnail class to body-content images
-    $('.body-content img').addClass("img-thumbnail");
+    if (_5grid.isDesktop)
+    {
+        $('#nav > ul').dropotron({ 
+            offsetY: -17,
+            offsetX: -1,
+            mode: 'fade',
+            noOpenerFade: true
+        });
+    }
+
 });
