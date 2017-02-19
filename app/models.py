@@ -506,10 +506,6 @@ class EventIndexPage(Page):
         # Get list of live event pages that are descendants of this page
         events = EventPage.objects.live().descendant_of(self)
 
-        # Filter events list to get ones that are either
-        # running now or start in the future
-        events = events.filter(date_from__gte=date.today())
-
         # Order by date
         events = events.order_by('date_from')
 
