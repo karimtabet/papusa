@@ -2,19 +2,37 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-    {% include "app/includes/intro.html" with intro=self.intro only %}
+    <div class="row">
+        <div class="12u">
+            <section>
+                <div class="5grid">
+                    <div class="row">
+                        <div class="12u mobileUI-main-content">
+                            <article class="box is-post">
+                                {# Uses method defined in models.py to retrieve all upcoming events #}
+                                {# See also standard index for creating a listing with a tag #}
+                                {% with self.events.all as events %}
+                                    {% if events %}    
+                                        <div class="5grid">
+                                            <div class="row">
+                                                {% for event in events %}
+                                                    {% include "app/includes/event_list_item.html" %}
+                                                    {% if forloop.counter|divisibleby:3 %}
+                                                </div>
+                                                <div class="row">
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endwith %}
 
-    {# Uses method defined in models.py to retrieve all upcoming events #}
-    {# See also standard index for creating a listing with a tag #}
-    {% with self.events.all as events %}
-        {% if events %}    
-            <div class="list-group">
-                {% for event in events %}
-                    {% include "app/includes/event_list_item.html" %}
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endwith %}
-
-    {% include "app/includes/related_links.html" with related_links=self.related_links.all only %}
+                                {% include "app/includes/related_links.html" with related_links=self.related_links.all only %}
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
 {% endblock %}
