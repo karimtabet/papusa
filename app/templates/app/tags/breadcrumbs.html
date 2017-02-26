@@ -1,13 +1,11 @@
-{% load wagtailcore_tags %}
+{% load demo_tags wagtailcore_tags %}
+{% get_site_root as site_root %}
 
 {% if ancestors %}
   <ol class="breadcrumb">
+    <li><a href="{% pageurl site_root %}">Home</a></li>
     {% for ancestor in ancestors %}
-      {% if forloop.last %}
-        <li class="active">{{ ancestor }}</li>
-      {% else %}
-        <li><a href="{% pageurl ancestor %}">{{ ancestor }}</a></li>
-      {% endif %}
+         > <li><a href="{% pageurl ancestor %}">{{ ancestor }}</a></li>
     {% endfor %}
   </ol>
 {% endif %}

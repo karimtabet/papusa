@@ -296,6 +296,19 @@
 	
 	/* List */
 
+	    ol.breadcrumb, ol.breadcrumb li, ol.breadcrumb li a {
+	        display: inline;
+	        height: 0;
+	        padding:0;
+	        text-decoration: none;
+	        margin-bottom: 0;
+	        color: #23cfd5;
+	    }
+
+	    ol.breadcrumb li a:hover {
+	        text-decoration: underline;
+	    }
+
 		ul.contact
 		{
 		}
