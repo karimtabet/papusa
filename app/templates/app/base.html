@@ -28,7 +28,7 @@
             <link rel="stylesheet" href="{% static 'app/css/style-desktop.css' %}">
         {% endcompress %}
 
-        {% block extra_css %}{% endblock %} {# Override this block in individual templates in order to add stylesheets on a template by template basis #}
+        {% block extra_css %}{% endblock %} {# Override this block in individual templates in order to add sty`lesheets on a template by template basis #}
 
         {# Javascript that needs to be called from head e.g. google analytics snippet and bootstrap shivs #}
         <script type="text/javascript">
@@ -65,8 +65,23 @@
 
         <div id="main-wrapper">
             <div class="5grid-layout">
-                {% block content %}{% endblock %}
-                {% include 'app/includes/prev_next.html' %}
+                {% breadcrumbs %}
+                <div class="row">
+                    <div class="12u" style="margin-top: 0;">
+                        <section>
+                            <div class="5grid">
+                                <div class="row">
+                                    <div class="12u mobileUI-main-content">
+                                        <article class="box is-post">
+                                          {% block content %}{% endblock %}
+                                          {% include 'app/includes/prev_next.html' %}
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
             </div>
         </div>
 
