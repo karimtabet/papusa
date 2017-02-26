@@ -2,7 +2,7 @@ from datetime import date
 from django import template
 from django.conf import settings
 
-from app.models import PersonPage, BlogPage, EventPage, Advert, Page
+from app.models import Logo, PersonPage, BlogPage, EventPage, Advert, Page
 
 register = template.Library()
 
@@ -39,6 +39,7 @@ def top_menu(context, parent, calling_page=None):
                            if calling_page else False)
     return {
         'calling_page': calling_page,
+        'logo': Logo.objects.filter(is_active=True).first(),
         'menuitems': menuitems,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],

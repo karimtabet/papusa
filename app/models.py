@@ -140,6 +140,44 @@ class ContactFields(models.Model):
         abstract = True
 
 
+# Logo snippet
+
+@register_snippet
+@python_2_unicode_compatible
+class Logo(models.Model):
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    caption = models.CharField(max_length=255, blank=True)
+    is_active = models.BooleanField(default=False)
+
+    panels = [
+        ImageChooserPanel('image'),
+        FieldPanel('caption'),
+        FieldPanel('is_active'),
+    ]
+
+    def save(self, *args, **kwargs):
+        if self.is_active:
+            for other_logo in Logo.objects.exclude(id=self.id):
+                other_logo.is_active = False
+                other_logo.save()
+        super(Logo, self).save(*args, **kwargs)
+
+    def __str__(self):
+        print(dir(self))
+        _str = 'Logo object'
+        if self.caption:
+            _str = self.caption
+        if self.is_active:
+            _str += ' (Active)'
+        return _str
+
+
 # Carousel items
 
 class CarouselItem(LinkFields):
@@ -185,6 +223,7 @@ class AdvertPlacement(models.Model):
     advert = models.ForeignKey('app.Advert', related_name='+')
 
 
+@register_snippet
 @python_2_unicode_compatible
 class Advert(models.Model):
     page = models.ForeignKey(
@@ -204,8 +243,6 @@ class Advert(models.Model):
 
     def __str__(self):
         return self.text
-
-register_snippet(Advert)
 
 
 # Home Page
