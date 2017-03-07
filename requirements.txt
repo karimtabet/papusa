@@ -1,5 +1,4 @@
 Django>=1.10,<1.11
-psycopg2==2.6
 gunicorn==19.6.0  
 django-compressor>=1.4
 django-modelcluster>=0.6
