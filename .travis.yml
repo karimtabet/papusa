@@ -6,11 +6,11 @@ env:
 before_install:
  - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
  - chmod +x docker-compose
-- sudo mv docker-compose /usr/local/bin
+ - sudo mv docker-compose /usr/local/bin
 script:
-  - docker-compose -f ~/Development/papusa/docker-compose.test.yml -p ci build
-  - docker-compose -f ~/Development/papusa/docker-compose.test.yml -p ci up -d
-  - if [ "$(docker logs --tail 1 ci_test_1)" != "Tests passed!" ]; then exit 1; fi
+ - docker-compose -f ~/Development/papusa/docker-compose.test.yml -p ci build
+ - docker-compose -f ~/Development/papusa/docker-compose.test.yml -p ci up -d
+ - if [ "$(docker logs --tail 1 ci_test_1)" != "Tests passed!" ]; then exit 1; fi
 notifications:
   email:
-    - dev@karimtabet.com
+   - dev@karimtabet.com
