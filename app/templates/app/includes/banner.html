@@ -1,0 +1,6 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% if feed_image %}
+    {% image feed_image width-200 as img %}
+    <a href="" class="image image-full"><img src="{{ img.url }}" alt=""></a>
+{% endif %}
