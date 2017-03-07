@@ -17,6 +17,7 @@ ENV PAPUSA_SRVPROJ=/srv/papusa
 
 RUN apt-get update && apt-get -y upgrade
 RUN apt-get install -y python python-pip
+RUN pip install --upgrade pip
 
 WORKDIR $PAPUSA_SRVHOME
 RUN mkdir media static logs
