@@ -16,7 +16,7 @@ ENV PAPUSA_SRVHOME=/srv
 ENV PAPUSA_SRVPROJ=/srv/papusa
 
 RUN apt-get update && apt-get -y upgrade
-RUN apt-get install -y python python-pip
+RUN apt-get install -y python python-pip libjpeg-dev
 RUN pip install --upgrade pip
 
 WORKDIR $PAPUSA_SRVHOME
