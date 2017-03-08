@@ -9,7 +9,7 @@ before_install:
  - sudo mv docker-compose /usr/local/bin
 script:
  - docker-compose -f docker-compose.test.yml -p ci build
- - docker-compose -f docker-compose.test.yml -p ci up -d
+ - docker-compose -f docker-compose.test.yml run ci_test_1
 notifications:
   email:
    - dev@karimtabet.com
