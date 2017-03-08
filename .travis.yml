@@ -8,8 +8,8 @@ before_install:
  - chmod +x docker-compose
  - sudo mv docker-compose /usr/local/bin
 script:
- - docker-compose -f docker-compose.test.yml -p ci build
- - docker-compose -f docker-compose.test.yml run ci_test_1
+ - docker-compose -f docker-compose.test.yml build
+ - docker-compose -f docker-compose.test.yml run test
 notifications:
   email:
    - dev@karimtabet.com
