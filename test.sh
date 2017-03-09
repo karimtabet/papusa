@@ -1,5 +1,5 @@
 sleep 5
-if curl web:8000 | grep -q 'Home plage'; then
+if curl web:8000 | grep -q 'Home page'; then
   echo "Tests passed!"
   exit 0
 else
