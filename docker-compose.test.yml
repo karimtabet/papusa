@@ -25,3 +25,5 @@ services:
       dockerfile: Dockerfile.test
     links:
       - web
+    depends_on:
+      - nginx
