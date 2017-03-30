@@ -15,13 +15,6 @@ ADMINS = (
 # as per https://docs.djangoproject.com/en/dev/topics/email/#email-backends
 EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ['web']
@@ -89,11 +82,7 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
-# ** You would never normally put the SECRET_KEY in a public repository,
-# ** however this is a demo app so we're using the default settings.
-# ** Don't use this key in any non-demo usage!
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'wq21wtjo3@d_qfjvd-#td!%7gfy2updj2z+nev^k$iy%=m4_tr'
+SECRET_KEY = os.environ["SECRET_KEY"]
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',

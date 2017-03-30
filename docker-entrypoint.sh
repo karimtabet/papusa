@@ -1,4 +1,5 @@
 #!/bin/bash
+sed -i "1s/.*/from .production import \*/" papusa/settings/__init__.py # Use production settings
 python manage.py migrate                  # Apply database migrations
 python manage.py collectstatic --noinput  # Collect static files
 

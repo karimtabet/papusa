@@ -1,7 +1,15 @@
+import os
+
+import dj_database_url
+
 from .base import *
 
 DEBUG = False
 
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.environ["DB_URL"])
+}
 
 WAGTAILSEARCH_BACKENDS = {
     'default': {
