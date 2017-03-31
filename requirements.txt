@@ -9,6 +9,7 @@ libsass==0.8.2
 Pillow==3.2.0
 html5lib==0.999999
 dj_database_url==0.4.2
+psycopg2==2.7.1
 
 # Dependencies for hosting
 django-redis==3.8.2
