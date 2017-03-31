@@ -1,5 +1,4 @@
-sleep 20
-if curl web:8000 | grep -q 'Welcome to your new Wagtail site!'; then
+if curl localhost:8000 | grep -q 'Welcome to your new Wagtail site!'; then
   echo "Tests passed!"
   exit 0
 else
