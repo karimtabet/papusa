@@ -46,7 +46,7 @@
 
 	a
 	{
-		color: #23cfd5;
+		color: #23afe5;
 		text-decoration: underline;
 	}
 	
@@ -89,6 +89,18 @@
 		{
 			-webkit-appearance: none;
 		}
+	form p label {
+        font-weight: 500;
+    }
+    form p input, form p textarea, form p select {
+        display: block;
+        width:50%;
+        padding:16px;
+        margin-top:8px;
+        border:1px solid #e5e5e5;
+        background:#f5f5f5;
+        color:#707070;
+    }
 			
 	br.clear
 	{
@@ -147,7 +159,7 @@
 			cursor: pointer;
 			border: 0;
 			border-radius: 5px;
-			background: #23cfd5;
+			background: #23afe5;
 			color: #fff !important;
 			font-weight: 700;
 			outline: 0;
@@ -207,48 +219,6 @@
 				.button-icon-4:before	{ background-position: -96px 0px;	}
 				.button-icon-5:before	{ background-position: -128px 0px;	}
 
-	/* Icon */
-
-		.icon48
-		{
-			display: inline-block;
-			width: 48px;
-			height: 48px;
-			background-image: url('../images/icons48.png');
-			text-indent: -9999em;
-		}
-		
-			.icon48-1	{ background-position:	0px 0px;		}
-			.icon48-2	{ background-position:	-48px 0px;		}
-			.icon48-3	{ background-position:	-96px 0px;		}
-			.icon48-4	{ background-position:	-144px 0px;		}
-			.icon48-5	{ background-position:	-192px 0px;		}
-			.icon48-6	{ background-position:	-240px 0px;		}
-			.icon48-7	{ background-position:	-288px 0px;		}
-			.icon48-8	{ background-position:	-336px 0px;		}
-			.icon48-9	{ background-position:	-384px 0px;		}
-			.icon48-10	{ background-position:	-432px 0px;		}
-
-		.icon64
-		{
-			display: inline-block;
-			width: 64px;
-			height: 64px;
-			background-image: url('../images/icons64.png');
-			text-indent: -9999em;
-		}
-		
-			.icon64-1	{ background-position:	0px 0px;		}
-			.icon64-2	{ background-position:	-64px 0px;		}
-			.icon64-3	{ background-position:	-128px 0px;		}
-			.icon64-4	{ background-position:	-192px 0px;		}
-			.icon64-5	{ background-position:	-256px 0px;		}
-			.icon64-6	{ background-position:	-320px 0px;		}
-			.icon64-7	{ background-position:	-384px 0px;		}
-			.icon64-8	{ background-position:	-448px 0px;		}
-			.icon64-9	{ background-position:	-512px 0px;		}
-			.icon64-10	{ background-position:	-576px 0px;		}
-
 	/* Image */
 
 		.image
@@ -302,7 +272,7 @@
 	        padding:0;
 	        text-decoration: none;
 	        margin-bottom: 0;
-	        color: #23cfd5;
+	        color: #23afe5;
 	    }
 
 	    ol.breadcrumb li a:hover {
@@ -361,7 +331,7 @@
 				position: absolute;
 				left: 0;
 				top: 1.3em;
-				background-color: #23cfd5;
+				background-color: #23afe5;
 				height: 3.5em;
 				text-align: center;
 				color: #fff;
@@ -377,7 +347,7 @@
 					position: absolute;
 					bottom: 0;
 					right: -1.2em;
-					border-left: solid 1.25em #23cfd5;
+					border-left: solid 1.25em #23afe5;
 					border-top: solid 1.8em transparent;
 					border-bottom: solid 1.8em transparent;
 				}
@@ -441,34 +411,28 @@
 
 			ul.social li
 			{
+				height: 48px;
+				width: 48px;
 				display: block;
 				border-radius: 5px;
 				background: #888;
-				-moz-transition: background-color .25s ease-in-out;
-				-webkit-transition: background-color .25s ease-in-out;
-				-o-transition: background-color .25s ease-in-out;
-				-ms-transition: background-color .25s ease-in-out;
-				transition: background-color .25s ease-in-out;
+				-moz-transition: opacity .25s ease-in-out;
+				-webkit-transition: opacity .25s ease-in-out;
+				-o-transition: opacity .25s ease-in-out;
+				-ms-transition: opacity .25s ease-in-out;
+				transition: opacity .25s ease-in-out;
 				float: left;
+				opacity: 0.8;
 			}
 			
 			ul.social li:first-child
 			{
 				margin-left: 0;
 			}
-			
-			ul.social li.facebook				{ background: #3c5a98; }
-				ul.social li.facebook:hover		{ background: #4c6aa8; }
-			ul.social li.twitter				{ background: #2daae4; }
-				ul.social li.twitter:hover		{ background: #3dbaf4; }
-			ul.social li.dribbble				{ background: #c4376b; }
-				ul.social li.dribbble:hover		{ background: #d4477b; }
-			ul.social li.linkedin				{ background: #006599; }
-				ul.social li.linkedin:hover		{ background: #1075a9; }
-			ul.social li.tumblr					{ background: #2b4661; }
-				ul.social li.tumblr:hover		{ background: #3b5671; }
-			ul.social li.googleplus				{ background: #da2713; }
-				ul.social li.googleplus:hover	{ background: #ea3723; }
+
+			ul.social li:hover {
+				opacity: 1;
+			}
 
 	/* Pennant */
 
@@ -476,7 +440,7 @@
 		{
 			position: relative;
 			display: inline-block;
-			background-color: #23cfd5;
+			background-color: #23afe5;
 			width: 9em;
 			padding: 1.5em 0 0.5em 0;
 			border-top-left-radius: 5px;
@@ -489,7 +453,7 @@
 				position: absolute;
 				bottom: -1.98em;
 				left: 0;
-				border-top: solid 2em #23cfd5;
+				border-top: solid 2em #23afe5;
 				border-left: solid 4.5em transparent;
 				border-right: solid 4.5em transparent;
 			}
@@ -520,6 +484,17 @@
 					border-top-color: #827a7c;
 				}
 
+	/* Paging */
+
+		.pager {
+        text-align: center;
+        padding-top: 20px;
+	    }
+	    .previous, .next {
+	        display: inline;
+	        margin-right: 20px;
+	    }
+
 /*********************************************************************************/
 /* Banner                                                                        */
 /*********************************************************************************/
@@ -549,7 +524,7 @@
 			
 			#banner header .byline
 			{
-				color: #23cfd5;
+				color: #23afe5;
 				padding: 0;
 				font-style: normal;
 			}
@@ -748,7 +723,7 @@
         -webkit-transition: color .2s ease-in;
     }
     .event-box .box header:hover h3, .event-box .box header:hover h4 {
-        color: #23cfd5;
+        color: #23afe5;
     }
 	
 /*********************************************************************************/

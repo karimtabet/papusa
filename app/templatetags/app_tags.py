@@ -2,7 +2,9 @@ from datetime import date
 from django import template
 from django.conf import settings
 
-from app.models import Logo, PersonPage, BlogPage, EventPage, Advert, Page
+from app.models import (
+    Logo, PersonPage, BlogPage, EventPage, Advert, Page, Social
+)
 
 register = template.Library()
 
@@ -124,6 +126,16 @@ def adverts(context):
         'adverts': Advert.objects.select_related('page'),
         'request': context['request'],
     }
+
+
+# Social snippets
+@register.inclusion_tag('app/tags/social.html', takes_context=True)
+def socials(context):
+    return {
+        'socials': Social.objects.all(),
+        'request': context['request'],
+    }
+
 
 
 @register.inclusion_tag('app/tags/breadcrumbs.html', takes_context=True)
