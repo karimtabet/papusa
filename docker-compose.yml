@@ -1,4 +1,4 @@
-version: '2'  
+version: '2.1'  
 services:
 
   nginx:
@@ -8,6 +8,7 @@ services:
       - "8000:8000"
     volumes:
       - ./nginx:/etc/nginx/conf.d
+      - /static:/static
     depends_on:
       - web
 
@@ -15,8 +16,10 @@ services:
     build: .
     container_name: papusa_web
     depends_on:
-      - postgres
-      - redis
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
     links:
       - "postgres:db"
     expose:
@@ -30,17 +33,12 @@ services:
     container_name: papusa_db
     environment:
       - POSTGRES_USER=papusa
+    healthcheck:
+      test: ["CMD-SHELL", "psql -h 'localhost' -U 'postgres' -c '\\l'"]
+      interval: 30s
+      timeout: 30s
+      retries: 3
 
   redis:
     image: redis:latest
     container_name: papusa_redis
-
-  wait:
-    image: waisbrot/wait
-    container_name: papusa_wait
-    links:
-      - postgres
-      - redis
-    environment:
-      - TARGETS=postgres:5432,redis:6379
-      - TIMEOUT=45s
