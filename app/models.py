@@ -169,13 +169,10 @@ class Logo(models.Model):
         super(Logo, self).save(*args, **kwargs)
 
     def __str__(self):
-        print(dir(self))
         _str = 'Logo object'
         if self.caption:
             _str = self.caption
-        if self.is_active:
-            _str += ' (Active)'
-        return _str
+        return _str + ' (Active)' if self.is_active else _str
 
 
 # Carousel items
@@ -243,6 +240,28 @@ class Advert(models.Model):
 
     def __str__(self):
         return self.text
+
+
+# Social snippet
+
+@register_snippet
+@python_2_unicode_compatible
+class Social(models.Model):
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        related_name='+'
+    )
+    name = models.CharField(max_length=255)
+    url = models.CharField(max_length=255)
+
+    panels = [
+        ImageChooserPanel('image'),
+        FieldPanel('name'),
+        FieldPanel('url'),
+    ]
+
+    def __str__(self):
+        return self.name
 
 
 # Home Page

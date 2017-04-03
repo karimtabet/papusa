@@ -1,0 +1,13 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% if socials %}
+  <ul class="social">
+    {% for social in socials %}
+      <li>
+        <a href="{{ social.url }}">
+          {% image social.image fill-48x48 %}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
