@@ -30,5 +30,5 @@ RUN pip install -r $PAPUSA_SRVPROJ/requirements.txt
 EXPOSE 8000
 
 WORKDIR $PAPUSA_SRVPROJ
-COPY ./docker-entrypoint.sh /
-ENTRYPOINT ["/docker-entrypoint.sh"]
+COPY ./start_papusa.sh /
+CMD ["/start_papusa.sh"]
