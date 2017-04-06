@@ -8,9 +8,7 @@ before_install:
  - chmod +x docker-compose
  - sudo mv docker-compose /usr/local/bin
 script:
- - docker-compose -f docker-compose.yml build
- - docker-compose -f docker-compose.yml up -d
- - ./test.sh
+ - make test
 notifications:
   email:
    - dev@karimtabet.com
