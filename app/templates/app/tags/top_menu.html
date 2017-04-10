@@ -1,32 +1,16 @@
-{% load app_tags wagtailcore_tags wagtailimages_tags %}
+{% load app_tags wagtailcore_tags %}
 {% get_site_root as site_root %}
 
 {# Shows top level links and their children #}
-<div class="row">
-  <div class="12u">
-    <section id="header">
-      {% if logo.image %}
-          {% image logo.image width-400 as img %}
-          <a href="{% pageurl site_root %}" title="{{ logo.caption }}">
-              <img src="{{ img.url }}" alt="{{ img.caption }}">
-          </a>
-      {% else %}
-          {% if logo.caption %}
-              <h1><a href="{% pageurl site_root %}" title="{{ logo.caption }}">{{ logo.caption }}</a></h1>
-          {% endif %}
+<nav id="nav" class="mobileUI-site-nav">
+  <ul>
+    {% for menuitem in menuitems %}
+    <li class="{% if menuitem.active %}current_page_item{% endif %}">
+      <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+      {% if menuitem.show_dropdown %}
+          {% top_menu_children parent=menuitem %}
       {% endif %}
-      <nav id="nav" class="mobileUI-site-nav">
-        <ul>
-          {% for menuitem in menuitems %}
-          <li class="{% if menuitem.active %}current_page_item{% endif %}">
-            <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
-            {% if menuitem.show_dropdown %}
-                {% top_menu_children parent=menuitem %}
-            {% endif %}
-          </li>
-          {% endfor %}
-        </ul>
-      </nav>
-    </section>
-  </div>
-</div>
+    </li>
+    {% endfor %}
+  </ul>
+</nav>

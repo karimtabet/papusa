@@ -1,0 +1,15 @@
+{% load app_tags wagtailcore_tags wagtailimages_tags %}
+{% get_site_root as site_root %}
+
+{% if logo %}
+    {% if logo.image %}
+        {% image logo.image width-400 as img %}
+        <a href="{% pageurl site_root %}" title="{{ logo.caption }}">
+            <img src="{{ img.url }}" alt="{{ img.caption }}">
+        </a>
+    {% else %}
+        {% if logo.caption %}
+            <h1><a href="{% pageurl site_root %}" title="{{ logo.caption }}">{{ logo.caption }}</a></h1>
+        {% endif %}
+    {% endif %}
+{% endif %}

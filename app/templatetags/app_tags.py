@@ -41,7 +41,6 @@ def top_menu(context, parent, calling_page=None):
                            if calling_page else False)
     return {
         'calling_page': calling_page,
-        'logo': Logo.objects.filter(is_active=True).first(),
         'menuitems': menuitems,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
@@ -115,6 +114,15 @@ def event_listing_homepage(context, count=2):
     return {
         'events': events[:count].select_related('feed_image'),
         # required by the pageurl tag that we want to use within this template
+        'request': context['request'],
+    }
+
+
+# Logo snippets
+@register.inclusion_tag('app/tags/logo.html', takes_context=True)
+def logo(context):
+    return {
+        'logo': Logo.objects.filter(is_active=True).first(),
         'request': context['request'],
     }
 
