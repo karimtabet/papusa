@@ -10,6 +10,7 @@ Pillow==3.2.0
 html5lib==0.999999
 dj_database_url==0.4.2
 psycopg2==2.7.1
+whitenoise==3.3.0
 
 # Dependencies for hosting
 django-redis==3.8.2
