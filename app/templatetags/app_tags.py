@@ -118,6 +118,20 @@ def event_listing_homepage(context, count=2):
     }
 
 
+# Events feed for footer
+@register.inclusion_tag(
+    'app/tags/event_listing_footer.html',
+    takes_context=True
+)
+def event_listing_footer(context, count=6):
+    events = EventPage.objects.live()
+    events = events.filter(date_from__gte=date.today()).order_by('date_from')
+    return {
+        'events': events[:count].select_related('feed_image'),
+        # required by the pageurl tag that we want to use within this template
+        'request': context['request'],
+    }
+
 # Logo snippets
 @register.inclusion_tag('app/tags/logo.html', takes_context=True)
 def logo(context):
