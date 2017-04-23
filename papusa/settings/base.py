@@ -115,6 +115,7 @@ INSTALLED_APPS = (
     'modelcluster',
     'rest_framework',
     'django.contrib.admin',
+    'storages',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 
