@@ -5,6 +5,7 @@ from django.conf import settings
 from app.models import (
     Advert,
     BlogPage,
+    ContactPage,
     EventPage,
     FormPage,
     Logo,
@@ -150,6 +151,15 @@ def form_listing_footer(context, count=6):
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
+
+
+@register.inclusion_tag('app/tags/contact_footer.html', takes_context=True)
+def contact_footer(context):
+    return {
+        'contact': ContactPage.objects.live().first(),
+        'request': context['request'],
+    }
+
 
 # Logo snippets
 @register.inclusion_tag('app/tags/logo.html', takes_context=True)

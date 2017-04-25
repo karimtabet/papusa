@@ -1,0 +1,42 @@
+{% load app_tags wagtailcore_tags %}
+<div class="4u">
+  <section>
+    <header>
+      <h2>Contact Us</h2>
+    </header>
+    {% socials %}
+    <ul class="contact">
+      {% if contact %}
+        <li>
+          <h3>Address</h3>
+          <p>{{ contact.address_1}}<br>
+            {{ contact.address_2 }}<br>
+            {{ contact.city}}, {{ contact.post_code}}, {{ contact.country }}</p>
+          </li>
+          <li>
+            <h3>Mail</h3>
+            <p><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></p>
+          </li>
+          <li>
+            <h3>Phone</h3>
+            <p>{{ contact.telephone }}</p>
+          </li>
+      {% else %}
+        <li>
+          <h3>Address</h3>
+          <p> Untitled Incorporated<br>
+            1234 Somewhere Road Suite #5432<br>
+            Nashville, TN 00000-0000 </p>
+        </li>
+        <li>
+          <h3>Mail</h3>
+          <p><a href="#">someone@untitled.tld</a></p>
+        </li>
+        <li>
+          <h3>Phone</h3>
+          <p>(800) 000-0000</p>
+        </li>
+      {% endif %}
+    </ul>
+  </section>
+</div>
