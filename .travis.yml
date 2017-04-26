@@ -4,11 +4,19 @@ services:
 env:
   COMPOSE_VERSION: 1.11.2
 before_install:
- - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
- - chmod +x docker-compose
- - sudo mv docker-compose /usr/local/bin
+  - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
 script:
- - make test
+  - make test
 notifications:
   email:
    - dev@karimtabet.com
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker run --rm -v "$PWD":/app treeder/bump patch
+    version=`cat VERSION`
+    docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push karimtabet/papusa:latest;
+    docker push  karimtabet/papusa:$version;
+    fi
