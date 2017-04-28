@@ -14,11 +14,6 @@ notifications:
    - dev@karimtabet.com
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    docker run --rm -v "$PWD":/app treeder/bump patch
-    version=`cat VERSION`
-    echo "version: $version"
-    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-    docker push karimtabet/papusa:latest;
-    docker push karimtabet/papusa:$version;
+      ./release.sh
     fi
   
