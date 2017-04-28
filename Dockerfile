@@ -23,12 +23,14 @@ WORKDIR $PAPUSA_SRVHOME
 RUN mkdir media static logs
 VOLUME ["$PAPUSA_SRVHOME/media/", "$PAPUSA_SRVHOME/logs/"]
 
-COPY ./ $PAPUSA_SRVPROJ
+COPY app/ $PAPUSA_SRVPROJ/app/
+COPY papusa/ $PAPUSA_SRVPROJ/papusa/
+COPY manage.py entrypoint.sh requirements.txt $PAPUSA_SRVPROJ/
 
 RUN pip install -r $PAPUSA_SRVPROJ/requirements.txt
 
 EXPOSE 8000
 
 WORKDIR $PAPUSA_SRVPROJ
-COPY ./start_papusa.sh /
-CMD ["/start_papusa.sh"]
+COPY ./entrypoint.sh /
+CMD ["/entrypoint.sh"]
