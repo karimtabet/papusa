@@ -11,7 +11,15 @@ start:
 clean:
 		echo "Cleaning up papusa services"
 		docker rm -f papusa_nginx papusa_web papusa_redis papusa_db
+		docker rmi karimtabet/papusa
 
-test: build start
+acceptance_test:
 		echo "Running test script"
-		./test.sh
+		sleep 20
+		./acceptance_test.sh
+
+test: build start acceptance_test clean
+
+release:
+		echo "Pushing to Docker Hub"
+		./release.sh
