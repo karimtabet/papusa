@@ -1,6 +1,7 @@
 ############################################################
 # Dockerfile to set up Papusa project
-# Based on an Ubuntu Image
+# Based on an Alpine Edge
+# Install psycopg2 driver (no compiling in container)
 # Installs Python and Pip
 # Creates media and logs volumes
 # Installs Python dependencies
@@ -8,16 +9,24 @@
 # Calls entrypoint
 ############################################################
 
-FROM ubuntu:16.04
+FROM alpine:edge
 
 MAINTAINER Karim Tabet
 
 ENV PAPUSA_SRVHOME=/srv
 ENV PAPUSA_SRVPROJ=/srv/papusa
 
-RUN apt-get update && apt-get -y upgrade
-RUN apt-get install -y python python-pip libtiff5-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
-RUN pip install --upgrade pip
+RUN apk update && \
+  apk --update add python3-dev py3-psycopg2 py3-pillow \
+  tiff-dev jpeg zlib freetype lcms2 libwebp tcl tk python3-tkinter libxml2 libxslt \
+  build-base
+
+  
+RUN python3 -m ensurepip && \
+  rm -r /usr/lib/python*/ensurepip
+
+RUN pip3 install --upgrade pip setuptools && \
+  rm -r /root/.cache
 
 WORKDIR $PAPUSA_SRVHOME
 RUN mkdir media static logs
@@ -27,7 +36,7 @@ COPY app/ $PAPUSA_SRVPROJ/app/
 COPY papusa/ $PAPUSA_SRVPROJ/papusa/
 COPY manage.py entrypoint.sh requirements.txt $PAPUSA_SRVPROJ/
 
-RUN pip install -r $PAPUSA_SRVPROJ/requirements.txt
+RUN pip3 install -r $PAPUSA_SRVPROJ/requirements.txt
 
 EXPOSE 8000
 
