@@ -17,11 +17,12 @@ ENV PAPUSA_SRVHOME=/srv
 ENV PAPUSA_SRVPROJ=/srv/papusa
 
 RUN apk update && \
-  apk --update add python3 python3-dev py3-psycopg2 py3-pillow \
-  tiff-dev jpeg-dev zlib-dev freetype-dev lcms2-dev libwebp-dev tcl-dev tk-dev python-tk libxml2-dev libxslt-dev
+  apk --update add python3-dev py3-psycopg2 py3-pillow \
+  tiff-dev jpeg zlib freetype lcms2 libwebp tcl tk python3-tkinter libxml2 libxslt \
+  build-base
 
   
-RUN RUN python3 -m ensurepip && \
+RUN python3 -m ensurepip && \
   rm -r /usr/lib/python*/ensurepip
 
 RUN pip3 install --upgrade pip setuptools && \
