@@ -28,6 +28,7 @@ services:
     environment:
       - SECRET_KEY='stagingkey'
       - DB_URL=postgres://papusa:papusa@db:5432/papusa
+      - REDIS_URL=redis://redis:6379/1
 
   postgres:
     image: postgres:latest
