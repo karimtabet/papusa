@@ -1,9 +1,9 @@
-Django>=1.10,<1.11
-gunicorn==19.6.0  
+Django==1.11.1
+gunicorn==19.7.1
 django-compressor>=1.4
 django-modelcluster>=0.6
 django-storages==1.5.2
-wagtail==1.9
+wagtail==1.10.1
 django-taggit>=0.14.0
 django-libsass>=0.2
 libsass==0.8.2
@@ -15,5 +15,5 @@ whitenoise==3.3.0
 boto3==1.4.4
 
 # Dependencies for hosting
-django-redis==3.8.2
+django-redis==4.8.0
 elasticsearch==1.2.0

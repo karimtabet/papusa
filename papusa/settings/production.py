@@ -9,6 +9,7 @@ DEBUG = True
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+REDIS_URL = os.environ.get('REDIS_URL')
 
 if AWS_STORAGE_BUCKET_NAME and AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY:
     AWS_S3_SIGNATURE_VERSION = 's3v4'
@@ -31,16 +32,16 @@ WAGTAILSEARCH_BACKENDS = {
 }
 
 
-CACHES = {
-    'default': {
-        'BACKEND': 'redis_cache.cache.RedisCache',
-        'LOCATION': '127.0.0.1:6379',
-        'KEY_PREFIX': 'papusa',
-        'OPTIONS': {
-            'CLIENT_CLASS': 'redis_cache.client.DefaultClient',
+if REDIS_URL:
+    CACHES = {
+        "default": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": REDIS_URL,
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            }
         }
     }
-}
 
 # Use the cached template loader
 TEMPLATE_LOADERS = (
