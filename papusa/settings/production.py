@@ -24,14 +24,6 @@ DATABASES = {
 }
 
 
-WAGTAILSEARCH_BACKENDS = {
-    'default': {
-        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch.ElasticSearch',
-        'INDEX': 'papusa'
-    }
-}
-
-
 if REDIS_URL:
     CACHES = {
         "default": {
