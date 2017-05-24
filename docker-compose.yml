@@ -8,7 +8,8 @@ services:
       - "8000:8000"
     volumes:
       - ./nginx:/etc/nginx/conf.d
-      - /static:/static
+    volumes_from:
+      - web
     depends_on:
       - web
 
@@ -25,6 +26,9 @@ services:
       - "postgres:db"
     expose:
       - "8000"
+    volumes:
+      - /srv/logs
+      - /srv/papusa
     environment:
       - SECRET_KEY='stagingkey'
       - DB_URL=postgres://papusa:papusa@db:5432/papusa
