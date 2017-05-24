@@ -3,16 +3,11 @@ FROM karimtabet/wagtailalpine:latest
 ENV PAPUSA_SRVHOME=/srv
 ENV PAPUSA_SRVPROJ=/srv/papusa
 
-WORKDIR $PAPUSA_SRVHOME
-RUN mkdir media static logs
-VOLUME ["$PAPUSA_SRVHOME/media/", "$PAPUSA_SRVHOME/logs/"]
+RUN mkdir /srv/logs
 
-COPY app/ $PAPUSA_SRVPROJ/app/
-COPY papusa/ $PAPUSA_SRVPROJ/papusa/
-COPY manage.py entrypoint.sh requirements.txt $PAPUSA_SRVPROJ/
+COPY app/ /srv/papusa/app/
+COPY papusa/ /srv/papusa/papusa/
+COPY manage.py entrypoint.sh /srv/papusa/
 
-EXPOSE 8000
-
-WORKDIR $PAPUSA_SRVPROJ
-COPY ./entrypoint.sh /
-CMD ["/entrypoint.sh"]
+WORKDIR /srv/papusa
+CMD ["./entrypoint.sh"]
