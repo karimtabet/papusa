@@ -20,12 +20,7 @@
         {% compress css %}
             {# Custom stylesheets #}
             {# SCSS compilation relies on django compressor #}
-            <link rel="stylesheet" href="{% static 'app/5grid/core.css' %}">
-            <link rel="stylesheet" href="{% static 'app/5grid/core-desktop.css' %}">
-            <link rel="stylesheet" href="{% static 'app/5grid/core-1200px.css' %}">
-            <link rel="stylesheet" href="{% static 'app/5grid/core-noscript.css' %}">
             <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
-            <link rel="stylesheet" href="{% static 'app/css/style-desktop.css' %}">
         {% endcompress %}
 
         {% block extra_css %}{% endblock %} {# Override this block in individual templates in order to add sty`lesheets on a template by template basis #}
@@ -55,7 +50,7 @@
     </head>
 
     <body class="{% block body_class %}{% endblock %}"> {# Override this block to set custom body classes on a template by template basis #}
-
+        <div id="page-wrapper">
         {% wagtailuserbar %}
         <div id="header-wrapper">
             <div class="5grid-layout">
@@ -76,29 +71,16 @@
         </div>
 
         <div id="main-wrapper">
-            <div class="5grid-layout">
-                {% breadcrumbs %}
-                <div class="row">
-                    <div class="12u" style="margin-top: 0;">
-                        <section>
-                            <div class="5grid">
-                                <div class="row">
-                                    <div class="12u mobileUI-main-content">
-                                        <article class="box is-post">
-                                          {% block content %}{% endblock %}
-                                          {% include 'app/includes/prev_next.html' %}
-                                        </article>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-                </div>
+            <div class="container">
+                <!-- <article class="box post"> -->
+                  {% block content %}{% endblock %}
+                  {% include 'app/includes/prev_next.html' %}
+                <!-- </article> -->
             </div>
         </div>
 
         <div id="footer-wrapper">
-          <section id="footer" class="5grid-layout">
+          <section id="footer" class="container">
             <div class="row">
                 {% event_listing_footer %}
                 {% form_listing_footer %}
@@ -106,13 +88,13 @@
             </div>
             <div class="row">
               <div class="12u">
-                <div id="copyright">
+<!--                 <div id="copyright">
                   <ul class="links">
                     <li>&copy; Untitled </li>
                     <li>Images: <a href="http://dreametrydoodle.com/">Dreametry Doodle</a> + <a href="http://iconify.it">Iconify.it</a></li>
                     <li>Design: <a href="http://html5up.net">HTML5 Up!</a></li>
                   </ul>
-                </div>
+                </div> -->
               </div>
             </div>
           </section>
@@ -123,8 +105,12 @@
         <script src="//code.jquery.com/jquery-migrate-1.0.0.js"></script>
 
         {% compress js %}
-            <script src="{% static "app/5grid/init.js" %}"></script>
-            <script src="{% static "app/js/jquery.dropotron-1.2.js" %}"></script>
+            <script src="{% static "app/js/jquery.min.js" %}"></script>
+            <script src="{% static "app/js/jquery.dropotron.min.js" %}"></script>
+            <script src="{% static "app/js/skel.min.js" %}"></script>
+            <script src="{% static "app/js/skel-viewport.min.js" %}"></script>
+            <script src="{% static "app/js/util.js" %}"></script>
+            <!--[if lte IE 8]><script src="{% static "app/js/ie/respond.min.js" %}"></script><![endif]-->
             {# Custom javascript #}
             <script src="{% static "app/js/main.js" %}"></script>
         {% endcompress %}
