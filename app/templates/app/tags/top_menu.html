@@ -2,10 +2,10 @@
 {% get_site_root as site_root %}
 
 {# Shows top level links and their children #}
-<nav id="nav" class="mobileUI-site-nav">
+<nav id="nav">
   <ul>
     {% for menuitem in menuitems %}
-    <li class="{% if menuitem.active %}current_page_item{% endif %}">
+    <li class="{% if menuitem.active %}current{% endif %}">
       <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
       {% if menuitem.show_dropdown %}
           {% top_menu_children parent=menuitem %}
