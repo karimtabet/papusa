@@ -3,7 +3,9 @@
 {% load wagtailcore_tags %}
 
 {% block content %}
+<article class="box post">
 {% include "app/includes/banner.html" with feed_image=self.feed_image only %}
 {{ self.body|richtext }}
 {% include "app/includes/related_links.html" with related_links=self.related_links.all only %}
+</article>
 {% endblock %}

@@ -1,15 +1,17 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {# Individual event item in a list - used on event index and home page #}
-<div class="4u event-box">
+<div class="4u 12u(mobile) event-box">
     <section class="box">
         {% image event.feed_image width-200 as img %}
-        <a href="{% pageurl event %}" class="image image-full"><img src="{{ img.url }}" alt="{{ event.title }}"></a>
+        <a href="{% pageurl event %}" class="image featured"><img src="{{ img.url }}" alt="{{ event.title }}"></a>
         <header>
             <h3><a href="{% pageurl event %}">{{ event.title }}</a></h3>
             <h4><a href="{% pageurl event %}">{{ event.date_from }}</a></h4>
         </header>
-        <p>{{ event.search_description|slice:"0:200" }}...</p>
-        <p><a href="{% pageurl event %}">Read more >></a></p>
+        <p>{{ event.search_description|slice:"0:60" }}...</p>
+        <footer>
+            <a href="#" class="button alt">Find out more</a>
+        </footer>
     </section>
 </div>
