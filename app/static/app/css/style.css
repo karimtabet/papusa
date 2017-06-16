@@ -1163,13 +1163,10 @@
 		color: #252122;
 		font-weight: 400;
 		margin: 0 0 0.5em 0;
+		font-size: 1.3em;
 	}
 
-	form input[type=text],
-	form input[type=email],
-	form input[type=password],
-	form select,
-	form textarea {
+	form input, form select, form textarea {
 		-webkit-appearance: none;
 		display: block;
 		border: 0;
@@ -1178,19 +1175,24 @@
 		border-radius: 5px;
 		border: solid 1px #dddddd;
 		background: #fff;
-		width: 100%;
+		width: 50%;
 	}
 
-		form input[type=text]:focus,
-		form input[type=email]:focus,
-		form input[type=password]:focus,
-		form select:focus,
-		form textarea:focus {
+		form input, form select:focus, form textarea:focus {
 			box-shadow: inset 0px 0px 1px 1px #43bff0;
 		}
 
+	form input[type=submit] {
+		width: 25%;
+	}
+
 	form textarea {
+		margin: 0 0 0.5em 0;
 		height: 15em;
+	}
+
+	form .helptext {
+		font-size: .8em;
 	}
 
 	form .formerize-placeholder {
@@ -1321,7 +1323,7 @@
 		input[type="reset"]:hover,
 		button:hover,
 		.button:hover {
-			background: #e53359;
+			background: #4dbbe6;
 		}
 
 		input[type="button"]:active,
@@ -1329,7 +1331,7 @@
 		input[type="reset"]:active,
 		button:active,
 		.button:active {
-			background: #c51349;
+			background: #86cae4;
 		}
 
 		input[type="button"].alt,
@@ -1747,7 +1749,7 @@
 /* Intro */
 
 	#intro {
-		text-align: center;
+		margin-bottom: 2em;
 	}
 
 /* Events */
