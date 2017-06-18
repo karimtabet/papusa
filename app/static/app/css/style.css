@@ -1798,6 +1798,13 @@
 			margin: 0;
 		}
 
+/* Admin */
+
+.wagtail-icon:before {
+	content: "\f013" !important;
+	font-family: FontAwesome !important;
+}
+
 /* Desktop */
 
 	@media screen and (min-width: 737px) {
