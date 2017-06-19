@@ -53,20 +53,14 @@
         <div id="page-wrapper">
         {% wagtailuserbar %}
         <div id="header-wrapper">
-            <div class="5grid-layout">
-                <div class="row">
-                    <div class="12u">
-                        <section id="header">
-                            {% block logo %}
-                                {% logo %}
-                            {% endblock %}
-                            {% block menu %}
-                                {% get_site_root as site_root %}
-                                {% top_menu parent=site_root calling_page=self %}
-                            {% endblock %}
-                        </section>
-                    </div>
-                </div>
+            <div id="header">
+                {% block logo %}
+                    {% logo %}
+                {% endblock %}
+                {% block menu %}
+                    {% get_site_root as site_root %}
+                    {% top_menu parent=site_root calling_page=self %}
+                {% endblock %}
             </div>
         </div>
 

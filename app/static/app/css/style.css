@@ -1,4 +1,3 @@
-@import url("font-awesome.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic");
 
 /*
@@ -1070,7 +1069,7 @@
 
 	body {
 		background: #252122;
-		background-image: url("images/bg02.png");
+		background-image: url("../images/bg02.png");
 		font-family: 'Source Sans Pro';
 		font-weight: 300;
 		color: #5d5d5d;
@@ -1659,7 +1658,7 @@
 /* Banner */
 
 	#banner {
-		background: #CCE8F4 url("../../images/pic01.jpg");
+		background: #CCE8F4 url("../../../images/pic01.jpg");
 		background-position: center center;
 		background-size: auto 100%;
 		background-repeat: no-repeat;
@@ -1693,7 +1692,7 @@
 
 	#main-wrapper {
 		position: relative;
-		background: #f7f7f7 url("images/bg02.png");
+		background: #f7f7f7 url("../images/bg02.png");
 	}
 
 		#main-wrapper:before {
@@ -1702,14 +1701,14 @@
 			top: 0;
 			left: 0;
 			width: 100%;
-			background: url("images/bg01.png");
+			background: url("../images/bg01.png");
 			background-size: 100% 100%;
 			z-index: 0;
 			opacity: 0.1;
 		}
 
 		#main-wrapper .major h2 {
-			background: #f7f7f7 url("images/bg02.png");
+			background: #f7f7f7 url("../images/bg02.png");
 		}
 
 	#footer-wrapper {
@@ -1723,7 +1722,7 @@
 			top: 0;
 			left: 0;
 			width: 100%;
-			background: url("images/bg01.png");
+			background: url("../images/bg01.png");
 			background-size: 100% 100%;
 			z-index: 0;
 			opacity: 0.5;
@@ -2429,7 +2428,7 @@
 				width: 275px;
 				z-index: 10002;
 				color: #858484;
-				background-image: url("images/bg02.png");
+				background-image: url("../images/bg02.png");
 				box-shadow: inset -3px 0px 5px 0px rgba(0, 0, 0, 0.35);
 			}
 
