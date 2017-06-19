@@ -365,9 +365,9 @@ class StandardPageRelatedLink(Orderable, RelatedLink):
 
 
 SIDEBAR_CHOICES = (
-    (None, 'No  Sidebar'),
-    ('left', 'Left Sidebar'),
-    ('right', 'Right Sidebar')
+    ('no_sidebar', 'No  Sidebar'),
+    ('left_sidebar', 'Left Sidebar'),
+    ('right_sidebar', 'Right Sidebar')
 )
 
 
@@ -375,11 +375,9 @@ class StandardPage(Page):
     intro = RichTextField(blank=True)
     body = RichTextField(blank=True)
     sidebar = models.CharField(
-        max_length=5,
+        max_length=13,
         choices=SIDEBAR_CHOICES,
-        null=True,
-        blank=True,
-        default=None
+        default='no_sidebar'
     )
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -393,6 +391,12 @@ class StandardPage(Page):
         index.SearchField('intro'),
         index.SearchField('body'),
     ]
+
+    def get_context(self, request):
+        context = super(StandardPage, self).get_context(request)
+        context['base_template'] = "app/base_{}.html".format(self.sidebar)
+        return context
+
 
 StandardPage.content_panels = [
     FieldPanel('title', classname="full title"),
