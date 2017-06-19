@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.utils.encoding import python_2_unicode_compatible
 from django import forms
 
-from wagtail.wagtailcore.models import Page, Orderable
+from wagtail.wagtailcore.models import Page, Orderable, ClusterableModel
 from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, FieldRowPanel, MultiFieldPanel, \
     InlinePanel, PageChooserPanel, StreamFieldPanel
@@ -69,7 +69,7 @@ class AlignedHTMLBlock(StructBlock):
         icon = "code"
 
 
-class DemoStreamBlock(StreamBlock):
+class CustomStreamBlock(StreamBlock):
     h2 = CharBlock(icon="title", classname="title")
     h3 = CharBlock(icon="title", classname="title")
     h4 = CharBlock(icon="title", classname="title")
@@ -213,6 +213,31 @@ class RelatedLink(LinkFields):
         abstract = True
 
 
+# Sidebar items
+
+class SidebarItem(LinkFields):
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    title = models.CharField(max_length=30, help_text="Sidebar title")
+    body = models.CharField(max_length=255, null=True, blank=True)
+    button_text = models.CharField(max_length=30, null=True, blank=True)
+    show_related_links = models.BooleanField(default=False)
+
+    panels = [
+        ImageChooserPanel('image'),
+        FieldPanel('title'),
+        FieldPanel('body'),
+        MultiFieldPanel(LinkFields.panels, "Link"),
+        FieldPanel('button_text'),
+        FieldPanel('show_related_links'),
+    ]
+
+
 # Advert Snippet
 
 class AdvertPlacement(models.Model):
@@ -275,7 +300,7 @@ class HomePageRelatedLink(Orderable, RelatedLink):
 
 
 class HomePage(Page):
-    body = StreamField(DemoStreamBlock())
+    body = StreamField(CustomStreamBlock())
     search_fields = Page.search_fields + [
         index.SearchField('body'),
     ]
@@ -294,6 +319,7 @@ HomePage.promote_panels = Page.promote_panels
 
 
 # Standard index page
+
 
 class StandardIndexPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('app.StandardIndexPage', related_name='related_links')
@@ -326,6 +352,10 @@ StandardIndexPage.promote_panels = Page.promote_panels + [
 
 # Standard page
 
+class StandardPageSidebarItem(Orderable, SidebarItem):
+    page = ParentalKey('app.StandardPage', related_name='sidebar_items')
+
+
 class StandardPageCarouselItem(Orderable, CarouselItem):
     page = ParentalKey('app.StandardPage', related_name='carousel_items')
 
@@ -334,9 +364,23 @@ class StandardPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('app.StandardPage', related_name='related_links')
 
 
+SIDEBAR_CHOICES = (
+    (None, 'No  Sidebar'),
+    ('left', 'Left Sidebar'),
+    ('right', 'Right Sidebar')
+)
+
+
 class StandardPage(Page):
     intro = RichTextField(blank=True)
     body = RichTextField(blank=True)
+    sidebar = models.CharField(
+        max_length=5,
+        choices=SIDEBAR_CHOICES,
+        null=True,
+        blank=True,
+        default=None
+    )
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -353,8 +397,10 @@ class StandardPage(Page):
 StandardPage.content_panels = [
     FieldPanel('title', classname="full title"),
     FieldPanel('intro', classname="full"),
-    InlinePanel('carousel_items', label="Carousel items"),
     FieldPanel('body', classname="full"),
+    FieldPanel('sidebar', classname="full"),
+    InlinePanel('sidebar_items', label="Sidebar items"),
+    InlinePanel('carousel_items', label="Carousel items"),
     InlinePanel('related_links', label="Related links"),
 ]
 
@@ -434,7 +480,7 @@ class BlogPageTag(TaggedItemBase):
 
 
 class BlogPage(Page):
-    body = StreamField(DemoStreamBlock())
+    body = StreamField(CustomStreamBlock())
     tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
     date = models.DateField("Post date")
     feed_image = models.ForeignKey(
