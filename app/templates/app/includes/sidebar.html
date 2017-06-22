@@ -1,0 +1,16 @@
+{% load wagtailimages_tags %}
+{% for sidebar_item in sidebar_items %}
+    <section class="box">
+        {% image sidebar_item.image original as img %}
+        <a href="{{ sidebar_item.link }}"" class="image featured"><img src="{{ img.url }}" alt="" /></a>
+        <header>
+            <h3>{{ sidebar_item.title }}</h3>
+        </header>
+        <p>{{ sidebar_item.body }}</p>
+        {% if sidebar_item.button_text %}
+            <footer>
+                <a href="{{ sidebar_item.link }}" class="button alt">{{ sidebar_item.button_text }}</a>
+            </footer>
+        {% endif %}
+    </section>
+{% endfor %}
