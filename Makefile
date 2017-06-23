@@ -31,7 +31,7 @@ test: build start
 
 login:
 	echo "Logging in to Dockerhub"
-	docker login -u "$(DOCKER_USERNAME)" -p "$(DOCKER_PASSWORD)"
+	docker login -u "$(DOCKER_USER)" -p "$(DOCKER_PASS)"
 
 push: login
 	echo "Pushing to Dockerhub"
