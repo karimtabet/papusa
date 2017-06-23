@@ -14,6 +14,6 @@ notifications:
    - dev@karimtabet.com
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-      ./release.sh
+      make push
     fi
   
