@@ -30,8 +30,10 @@ test: build start
 	./acceptance_test.sh
 
 login:
-	docker login -u $(DOCKER_USER) -p $(DOCKER_PASS)
+	echo "Logging in to Dockerhub"
+	docker login -u $DOCKER_USER -p $DOCKER_PASS
 
 push: login
+	echo "Pushing to Dockerhub"
 	docker push $(BUILD_TAG)
 	docker push $(LATEST_TAG)
