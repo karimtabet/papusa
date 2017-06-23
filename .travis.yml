@@ -14,7 +14,6 @@ notifications:
    - dev@karimtabet.com
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-      make tag
-      make push
+      echo "HI"
     fi
   
