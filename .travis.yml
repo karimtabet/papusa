@@ -14,7 +14,8 @@ notifications:
    - dev@karimtabet.com
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-      make tag
-      make push
+      docker tag $(LATEST_TAG) $(BUILD_TAG)
+      docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+      docker push $(BUILD_TAG)
+      docker push $(LATEST_TAG)
     fi
-  
