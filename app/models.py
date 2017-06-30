@@ -199,6 +199,34 @@ class CarouselItem(LinkFields):
         abstract = True
 
 
+# Pennant Items
+
+class PennantItem(LinkFields):
+    '''
+    Pennants are small flags made up of a Font Awesome icon, a header,
+    a caption and an embed url.
+    '''
+    header = models.CharField(max_length=126, blank=True)
+    caption = models.CharField(max_length=255, blank=True)
+    fa_icon = models.CharField(
+        'Font Awesome Icon',
+        max_length=30,
+        blank=True,
+        help_text='Copy the name of any icon from fontawesome.io/icons/'
+    )
+
+    panels = [
+        FieldPanel('fa_icon'),
+        FieldPanel('header'),
+        FieldPanel('caption'),
+        MultiFieldPanel(LinkFields.panels, 'Link'),
+    ]
+
+    class Meta:
+        abstract = True
+
+
+
 # Related links
 
 class RelatedLink(LinkFields):
@@ -295,6 +323,10 @@ class HomePageCarouselItem(Orderable, CarouselItem):
     page = ParentalKey('app.HomePage', related_name='carousel_items')
 
 
+class HomePagePennantItem(Orderable, PennantItem):
+    page = ParentalKey('app.HomePage', related_name='pennant_items')
+
+
 class HomePageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('app.HomePage', related_name='related_links')
 
@@ -312,6 +344,7 @@ HomePage.content_panels = [
     FieldPanel('title', classname="full title"),
     StreamFieldPanel('body'),
     InlinePanel('carousel_items', label="Carousel items"),
+    InlinePanel('pennant_items', label='Penant items'),
     InlinePanel('related_links', label="Related links"),
 ]
 
