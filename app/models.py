@@ -372,6 +372,7 @@ class StandardIndexPage(Page):
         index.SearchField('intro'),
     ]
 
+    parent_page_types = ['app.HomePage']
     subpage_types = ['app.StandardPage', 'app.FormPage']
 
 StandardIndexPage.content_panels = [
@@ -427,6 +428,11 @@ class StandardPage(Page):
         index.SearchField('body'),
     ]
 
+    parent_page_types = [
+        'app.HomePage',
+        'app.StandardPage',
+        'app.StandardIndexPage'
+    ]
     subpage_types = []
 
     def get_context(self, request):
@@ -465,6 +471,11 @@ class ContactPage(Page, ContactFields):
         index.SearchField('body'),
     ]
 
+    parent_page_types = [
+        'app.HomePage',
+        'app.StandardPage',
+        'app.StandardIndexPage'
+    ]
     subpage_types = []
 
 ContactPage.content_panels = [
@@ -487,6 +498,11 @@ class FormPage(AbstractEmailForm):
     intro = RichTextField(blank=True)
     thank_you_text = RichTextField(blank=True)
 
+    parent_page_types = [
+        'app.HomePage',
+        'app.StandardPage',
+        'app.StandardIndexPage'
+    ]
     subpage_types = []
 
 FormPage.content_panels = [
