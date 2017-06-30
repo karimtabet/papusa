@@ -339,6 +339,8 @@ class StandardIndexPage(Page):
         index.SearchField('intro'),
     ]
 
+    subpage_types = ['app.StandardPage', 'app.FormPage']
+
 StandardIndexPage.content_panels = [
     FieldPanel('title', classname="full title"),
     FieldPanel('intro', classname="full"),
@@ -392,6 +394,8 @@ class StandardPage(Page):
         index.SearchField('body'),
     ]
 
+    subpage_types = []
+
     def get_context(self, request):
         context = super(StandardPage, self).get_context(request)
         context['base_template'] = "app/base_{}.html".format(self.sidebar)
@@ -428,6 +432,8 @@ class ContactPage(Page, ContactFields):
         index.SearchField('body'),
     ]
 
+    subpage_types = []
+
 ContactPage.content_panels = [
     FieldPanel('title', classname="full title"),
     FieldPanel('body', classname="full"),
@@ -447,6 +453,8 @@ class FormField(AbstractFormField):
 class FormPage(AbstractEmailForm):
     intro = RichTextField(blank=True)
     thank_you_text = RichTextField(blank=True)
+
+    subpage_types = []
 
 FormPage.content_panels = [
     FieldPanel('title', classname="full title"),
