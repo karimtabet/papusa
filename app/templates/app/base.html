@@ -53,6 +53,7 @@
         <div id="page-wrapper">
         {% wagtailuserbar %}
         <div id="header-wrapper">
+        {% block header %}
             <div id="header">
                 {% block logo %}
                     {% logo %}
@@ -61,6 +62,7 @@
                     {% get_site_root as site_root %}
                     {% top_menu parent=site_root calling_page=self %}
                 {% endblock %}
+        {% endblock %}
             </div>
         </div>
 
