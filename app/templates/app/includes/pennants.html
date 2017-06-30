@@ -1,0 +1,28 @@
+{% load wagtailimages_tags wagtailembeds_tags %}
+
+
+{% if pennant_items %}
+<section id="intro" class="container">
+  <div class="row">
+  {% for pennant_item in pennant_items %}
+    <div class="4u 12u(mobile)">
+      {% if pennant_item.sort_order == 0 %}
+      <section class="first">
+        <i class="icon featured {{ pennant_item.fa_icon }}"></i>
+      {% elif pennant_item.sort_order == 1 %}
+      <section class="middle">
+        <i class="icon featured alt {{ pennant_item.fa_icon }}"></i>
+      {% elif pennant_item.sort_order == 2 %}
+      <section class="last">
+        <i class="icon featured alt2 {{ pennant_item.fa_icon }}"></i>
+      {% endif %}
+        <header>
+          <h2>{{ pennant_item.header }}</h2>
+        </header>
+        <p>{{ pennant_item.caption }}</p>
+      </section>
+    </div>
+  {% endfor %}
+  </div>
+</section>
+{% endif %}
