@@ -1,25 +1,23 @@
 {% extends "app/base.html" %}
-{% load app_tags %}
 
+{% load app_tags wagtailcore_tags static %}
 
-{% block heading %}
-    <div class="jumbotron">
-        <h1>Wagtail Demo</h1>
-        <p>A set of app templates to show you what Wagtail can do.</p>
-        {% block search_box %}
-            {% include "app/includes/search_box.html" only %}
-        {% endblock %}
-    </div>
+{% block menu %}
+    {{ block.super }}
 {% endblock %}
 
-
-{% block content %}
+{% block header %}
+    {{ block.super }}
     {% include "app/includes/carousel.html" with carousel_items=self.carousel_items.all only %}
-
-    {% if self.body %}
-        <div class="body-content">
-            {% include "app/includes/streamfield.html" with content=self.body %}
-        </div>
-    {% endif %}
-
+    {% include "app/includes/pennants.html" with pennant_items=self.pennant_items.all only %}
+      <footer>
+    <ul class="actions">
+      <li><a href="#" class="button big">Get Started</a></li>
+      <li><a href="#" class="button alt big">Learn More</a></li>
+    </ul>
+  </footer>
 {% endblock %}
+
+{% include "app/includes/banner.html" with feed_image=self.feed_image only %}
+ 
+{% include "app/includes/related_links.html" with related_links=self.related_links.all only %}
