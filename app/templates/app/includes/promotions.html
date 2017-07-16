@@ -3,19 +3,25 @@
 
 {% if promotions %}
 {% for promotion in promotions %}
-  <header class="major">
-      <h2>{{ promotion.header }}</h2>
-  </header>
-  <div class="row">
-  {% if promotion.promotion_page.get_children %}
-      {% for page in promotion.promotion_page.get_children|slice:"0:5" %}
-          {% include "app/includes/page_list_item.html" %}
-          {% if forloop.counter|divisibleby:3 %}
-      </div>
+<div class="row">
+  <div class="12u">
+    <section>
+      <header class="major">
+          <h2>{{ promotion.header }}</h2>
+      </header>
       <div class="row">
-          {% endif %}
-      {% endfor %}
-  {% endif %}
+      {% if promotion.promotion_page.get_children %}
+          {% for page in promotion.promotion_page.get_children|slice:"0:6" %}
+              {% include "app/includes/page_list_item.html" %}
+              {% if forloop.counter|divisibleby:3 %}
+          </div>
+          <div class="row">
+              {% endif %}
+          {% endfor %}
+      {% endif %}
+      </div>
+    </section>
   </div>
+</div>
 {% endfor %}
 {% endif %}
