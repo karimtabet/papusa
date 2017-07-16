@@ -8,6 +8,12 @@
 
 {% block header %}
     {{ block.super }}
+    <section id="banner">
+        <header>
+            <h2>Welcome to Creative Opportunities</h2>
+            <p>Celebrating the arts across London</p>
+        </header>
+    </section>
     {% include "app/includes/carousel.html" with carousel_items=self.carousel_items.all only %}
     {% include "app/includes/pennants.html" with pennant_items=self.pennant_items.all only %}
       <footer>
