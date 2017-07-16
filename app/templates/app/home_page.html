@@ -16,12 +16,15 @@
     </section>
     {% include "app/includes/carousel.html" with carousel_items=self.carousel_items.all only %}
     {% include "app/includes/pennants.html" with pennant_items=self.pennant_items.all only %}
-      <footer>
-    <ul class="actions">
-      <li><a href="#" class="button big">Get Started</a></li>
-      <li><a href="#" class="button alt big">Learn More</a></li>
-    </ul>
-  </footer>
+    <footer>
+        <ul class="actions">
+            <li><a href="#" class="button big">Get Started</a></li>
+            <li><a href="#" class="button alt big">Learn More</a></li>
+        </ul>
+    </footer>
+{% endblock %}
+{% block layout %}
+{% include "app/includes/promotions.html" with promotions=self.promotions.all only %}
 {% endblock %}
 
 {% include "app/includes/banner.html" with feed_image=self.feed_image only %}
