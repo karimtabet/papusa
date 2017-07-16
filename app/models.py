@@ -331,6 +331,22 @@ class HomePageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('app.HomePage', related_name='related_links')
 
 
+class HomePagePromotion(Orderable, PennantItem):
+    promotion_page = models.ForeignKey(
+        'wagtailcore.Page',
+        related_name='promotion_pages',
+        null=True,
+        blank=True
+    )
+    header = models.CharField(max_length=24)
+    page = ParentalKey('app.HomePage', related_name='promotions')
+
+    panels = [
+        PageChooserPanel('promotion_page'),
+        FieldPanel('header'),
+    ]
+
+
 class HomePage(Page):
     body = StreamField(CustomStreamBlock())
     search_fields = Page.search_fields + [
@@ -345,6 +361,7 @@ HomePage.content_panels = [
     StreamFieldPanel('body'),
     InlinePanel('carousel_items', label="Carousel items"),
     InlinePanel('pennant_items', label='Penant items'),
+    InlinePanel('promotions', label='Promotions'),
     InlinePanel('related_links', label="Related links"),
 ]
 
