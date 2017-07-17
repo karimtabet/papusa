@@ -505,15 +505,31 @@ ContactPage.promote_panels = Page.promote_panels + [
     ImageChooserPanel('feed_image'),
 ]
 
-#
+# Forms
 
 class FormField(AbstractFormField):
     page = ParentalKey('FormPage', related_name='form_fields')
 
 
+class FormPageSidebarItem(Orderable, SidebarItem):
+    page = ParentalKey('app.FormPage', related_name='sidebar_items')
+
+
 class FormPage(AbstractEmailForm):
     intro = RichTextField(blank=True)
     thank_you_text = RichTextField(blank=True)
+    sidebar = models.CharField(
+        max_length=13,
+        choices=SIDEBAR_CHOICES,
+        default='no_sidebar'
+    )
+    feed_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
 
     parent_page_types = [
         'app.HomePage',
@@ -522,11 +538,18 @@ class FormPage(AbstractEmailForm):
     ]
     subpage_types = []
 
+    def get_context(self, request):
+        context = super(FormPage, self).get_context(request)
+        context['base_template'] = "app/base_{}.html".format(self.sidebar)
+        return context
+
 FormPage.content_panels = [
     FieldPanel('title', classname="full title"),
     FieldPanel('intro', classname="full"),
     InlinePanel('form_fields', label="Form fields"),
     FieldPanel('thank_you_text', classname="full"),
+    FieldPanel('sidebar', classname="full"),
+    InlinePanel('sidebar_items', label="Sidebar items"),
     MultiFieldPanel([
         FieldRowPanel([
             FieldPanel('from_address', classname="col6"),
@@ -534,4 +557,8 @@ FormPage.content_panels = [
         ]),
         FieldPanel('subject'),
     ], "Email"),
+]
+
+FormPage.promote_panels = Page.promote_panels + [
+    ImageChooserPanel('feed_image'),
 ]
