@@ -1658,9 +1658,9 @@
 /* Banner */
 
 	#banner {
-		background: #CCE8F4 url("../../../images/pic01.jpg");
+		background: #CCE8F4 url("../images/pic01.jpg");
 		background-position: center center;
-		background-size: auto 100%;
+		background-size: 80%;
 		background-repeat: no-repeat;
 		text-align: center;
 	}

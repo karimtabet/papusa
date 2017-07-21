@@ -4,8 +4,11 @@
 {# Shows top level links and their children #}
 <nav id="nav">
   <ul>
+    <li style="white-space: nowrap;" class="{% if parent.active %}current{% endif %}">
+      <a href="{% pageurl parent %}">Home</a>
+    </li>
     {% for menuitem in menuitems %}
-    <li class="{% if menuitem.active %}current{% endif %}">
+    <li style="white-space: nowrap;" class="{% if menuitem.active %}current{% endif %}">
       <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
       {% if menuitem.show_dropdown %}
           {% top_menu_children parent=menuitem %}

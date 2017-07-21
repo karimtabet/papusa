@@ -1,12 +1,20 @@
-{% extends "app/base.html" %}
-{% load wagtailcore_tags app_tags %}
+{% extends "app/base_no_sidebar.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-    {% include "app/includes/intro.html" with intro=self.intro only %}
-
-    {# Listing created with a tag - allows filtering by whether the page is live #}
-    {# See also the blog index or events index where the listing is created from a method defined in models.py #}
-    {% standard_index_listing calling_page=self %}
-
-    {% include "app/includes/related_links.html" with related_links=self.related_links.all only %}
+<header class="major">
+    <h2>{{ self.title }}</h2>
+</header>
+<div class="row">
+{% if self.get_children %}
+    {% for page in self.get_children %}
+        {% include "app/includes/page_list_item.html" %}
+        {% if forloop.counter|divisibleby:3 %}
+    </div>
+    <div class="row">
+        {% endif %}
+    {% endfor %}
+{% endif %}
+</div>
+{% include "app/includes/related_links.html" with related_links=self.related_links.all only %}
 {% endblock %}

@@ -1,11 +1,10 @@
-{% load app_tags wagtailcore_tags wagtailimages_tags %}
+{% load app_tags wagtailcore_tags static %}
 {% get_site_root as site_root %}
 
 {% if logo %}
     {% if logo.image %}
-        {% image logo.image width-400 as img %}
-        <a href="{% pageurl site_root %}" title="{{ logo.caption }}">
-            <img src="{{ img.url }}" alt="{{ img.caption }}">
+        <a href="{% pageurl site_root %}" title="Creative Opportunities">
+            <img src="{% static 'app/images/logo.svg' %}" alt="Creative Opportunities" width="600px" style="margin-bottom: 3em;">
         </a>
     {% else %}
         {% if logo.caption %}

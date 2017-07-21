@@ -1,0 +1,18 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{# Individual page item in a list - used on standard page index and home page #}
+<div class="4u 12u(mobile) page-box">
+    <section class="box">
+        {% if page.specific.feed_image %}
+            {% image page.specific.feed_image original as img %}
+            <a href="{% pageurl page %}" class="image featured"><img src="{{ img.url }}" alt="{{ page.title }}"></a>
+        {% endif %}
+        <header>
+            <h3><a href="{% pageurl page %}">{{ page.title }}</a></h3>
+        </header>
+        <p>{{ page.search_description|slice:"0:130" }}...</p>
+        <footer>
+            <a href="{% pageurl page %}" class="button alt">Find out more</a>
+        </footer>
+    </section>
+</div>
