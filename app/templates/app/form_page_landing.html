@@ -1,6 +1,8 @@
-{% extends "app/base.html" %}
+{% extends "app/base_no_sidebar.html" %}
 {% load wagtailcore_tags %}
 
 {% block content %}
+<article class="box post">
     {{ self.thank_you_text|richtext }}
+</article>
 {% endblock %}
