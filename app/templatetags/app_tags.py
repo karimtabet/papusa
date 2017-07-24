@@ -95,6 +95,18 @@ def form_listing_footer(context, count=6):
         'request': context['request'],
     }
 
+# Page promotion for footer
+@register.inclusion_tag(
+    'app/tags/footer_promotions.html',
+    takes_context=True
+)
+def footer_promotions(context, count=2):
+    promos = get_site_root(context).specific.footer_promotions.all()
+    return {
+        'footer_promotions': promos[:count],
+        # required by the pageurl tag that we want to use within this template
+        'request': context['request'],
+    }
 
 @register.inclusion_tag('app/tags/contact_footer.html', takes_context=True)
 def contact_footer(context):
