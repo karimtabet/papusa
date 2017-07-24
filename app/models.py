@@ -331,7 +331,7 @@ class HomePageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('app.HomePage', related_name='related_links')
 
 
-class HomePagePromotion(Orderable, PennantItem):
+class HomePagePromotion(Orderable):
     promotion_page = models.ForeignKey(
         'wagtailcore.Page',
         related_name='promotion_pages',
@@ -340,6 +340,22 @@ class HomePagePromotion(Orderable, PennantItem):
     )
     header = models.CharField(max_length=24)
     page = ParentalKey('app.HomePage', related_name='promotions')
+
+    panels = [
+        PageChooserPanel('promotion_page'),
+        FieldPanel('header'),
+    ]
+
+
+class HomePageFooterPromotion(Orderable):
+    promotion_page = models.ForeignKey(
+        'wagtailcore.Page',
+        related_name='footer_promotion_pages',
+        null=True,
+        blank=True
+    )
+    header = models.CharField(max_length=24)
+    page = ParentalKey('app.HomePage', related_name='footer_promotions')
 
     panels = [
         PageChooserPanel('promotion_page'),
@@ -362,6 +378,7 @@ HomePage.content_panels = [
     InlinePanel('carousel_items', label="Carousel items"),
     InlinePanel('pennant_items', label='Penant items'),
     InlinePanel('promotions', label='Promotions'),
+    InlinePanel('footer_promotions', label='Footer Promotions'),
     InlinePanel('related_links', label="Related links"),
 ]
 
