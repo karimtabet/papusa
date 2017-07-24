@@ -69,32 +69,6 @@ def top_menu_children(context, parent):
         'request': context['request'],
     }
 
-# Events feed for footer
-@register.inclusion_tag(
-    'app/tags/event_listing_footer.html',
-    takes_context=True
-)
-def event_listing_footer(context, count=6):
-    events = EventPage.objects.live().order_by('date_from')
-    return {
-        'events': events[:count].select_related('feed_image'),
-        # required by the pageurl tag that we want to use within this template
-        'request': context['request'],
-    }
-
-# Forms feed for footer
-@register.inclusion_tag(
-    'app/tags/form_listing_footer.html',
-    takes_context=True
-)
-def form_listing_footer(context, count=6):
-    forms = FormPage.objects.live()
-    return {
-        'forms': forms[:count],
-        # required by the pageurl tag that we want to use within this template
-        'request': context['request'],
-    }
-
 # Page promotion for footer
 @register.inclusion_tag(
     'app/tags/footer_promotions.html',
