@@ -8,13 +8,13 @@
     <div class="4u 12u(mobile)">
       {% if pennant_item.sort_order == 0 %}
       <section class="first">
-        <i class="icon featured {{ pennant_item.fa_icon }}"></i>
+        <a href="{{ pennant_item.link }}"><i style="cursor: pointer" class="icon featured {{ pennant_item.fa_icon }}"></i></a>
       {% elif pennant_item.sort_order == 1 %}
       <section class="middle">
-        <i class="icon featured alt {{ pennant_item.fa_icon }}"></i>
+        <a href="{{ pennant_item.link }}"><i style="cursor: pointer" class="icon featured alt {{ pennant_item.fa_icon }}"></i></a>
       {% elif pennant_item.sort_order == 2 %}
       <section class="last">
-        <i class="icon featured alt2 {{ pennant_item.fa_icon }}"></i>
+        <a href="{{ pennant_item.link }}"><i style="cursor: pointer" class="icon featured alt2 {{ pennant_item.fa_icon }}"></i></a>
       {% endif %}
         <header>
           <h2>{{ pennant_item.header }}</h2>
