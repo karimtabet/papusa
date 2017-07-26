@@ -3,8 +3,8 @@
 
 {% if logo %}
     {% if logo.image %}
-        <a href="{% pageurl site_root %}" title="Creative Opportunities">
-            <img src="{% static 'app/images/logo.svg' %}" alt="Creative Opportunities" width="600px" style="margin-bottom: 3em;max-width: 100% !important;padding-left: 1em;padding-right: 1em;">
+        <a href="{% pageurl site_root %}">
+            <img src="{% static 'app/images/logo.svg' %}" alt="" width="600px" style="margin-bottom: 3em;max-width: 100% !important;padding-left: 1em;padding-right: 1em;">
         </a>
     {% else %}
         {% if logo.caption %}
