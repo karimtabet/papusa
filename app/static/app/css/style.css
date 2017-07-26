@@ -1185,6 +1185,11 @@
 		width: 25%;
 	}
 
+	form input[type=checkbox] {
+		display: contents;
+		width: 0;
+	}
+
 	form textarea {
 		margin: 0 0 0.5em 0;
 		height: 15em;
