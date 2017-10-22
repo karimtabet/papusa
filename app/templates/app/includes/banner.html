@@ -10,4 +10,15 @@
     <section id="banner" style="background: #CCE8F4 url('{{ img.url }}')">
 {% else %}
     <section id="banner">
+    {{ banner_header }}
 {% endif %}
+
+{% if banner_header %}
+        <header>
+            <h2>{{ banner_header }}</h2>
+{% if banner_caption %}
+            <p>{{ banner_caption }}</p>
+{% endif %}
+        </header>
+{% endif %}
+    </section>
