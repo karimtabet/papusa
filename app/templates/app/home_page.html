@@ -8,12 +8,7 @@
 
 {% block header %}
     {{ block.super }}
-    {% include "app/includes/banner.html" with banner_image=self.banner_image only %}
-        <header>
-            <h2>Welcome to Creative Opportunities</h2>
-            <p>Supporting young people to learn skills, make connections and lead change</p>
-        </header>
-    </section>
+    {% include "app/includes/banner.html" with banner_image=self.banner_image banner_header=self.banner_header banner_caption=self.banner_caption only %}
     {% include "app/includes/carousel.html" with carousel_items=self.carousel_items.all only %}
     {% include "app/includes/pennants.html" with pennant_items=self.pennant_items.all only %}
     <footer>
