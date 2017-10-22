@@ -364,6 +364,14 @@ class HomePageFooterPromotion(Orderable):
 
 
 class HomePage(Page):
+    logo_text = models.CharField(max_length=24, null=True, blank=True)
+    logo_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
     banner_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -384,7 +392,11 @@ class HomePage(Page):
 HomePage.content_panels = [
     FieldPanel('title', classname="full title"),
     StreamFieldPanel('body'),
+    FieldPanel('logo_text'),
+    ImageChooserPanel('logo_image'),
     ImageChooserPanel('banner_image'),
+    FieldPanel('banner_header'),
+    FieldPanel('banner_caption'),
     InlinePanel('carousel_items', label="Carousel items"),
     InlinePanel('pennant_items', label='Penant items'),
     InlinePanel('promotions', label='Promotions'),
