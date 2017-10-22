@@ -1,5 +1,4 @@
 /env
 *__pycache__
-app/migrations/*
 media/*
 db.sqlite3
