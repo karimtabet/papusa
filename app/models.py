@@ -364,6 +364,15 @@ class HomePageFooterPromotion(Orderable):
 
 
 class HomePage(Page):
+    banner_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    banner_header = models.CharField(max_length=48, null=True, blank=True)
+    banner_caption = models.CharField(max_length=256, null=True, blank=True)
     body = StreamField(CustomStreamBlock())
     search_fields = Page.search_fields + [
         index.SearchField('body'),
@@ -375,6 +384,7 @@ class HomePage(Page):
 HomePage.content_panels = [
     FieldPanel('title', classname="full title"),
     StreamFieldPanel('body'),
+    ImageChooserPanel('banner_image'),
     InlinePanel('carousel_items', label="Carousel items"),
     InlinePanel('pennant_items', label='Penant items'),
     InlinePanel('promotions', label='Promotions'),
