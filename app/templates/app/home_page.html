@@ -8,7 +8,7 @@
 
 {% block header %}
     {{ block.super }}
-    <section id="banner">
+    {% include "app/includes/banner.html" with banner_image=self.banner_image only %}
         <header>
             <h2>Welcome to Creative Opportunities</h2>
             <p>Supporting young people to learn skills, make connections and lead change</p>
