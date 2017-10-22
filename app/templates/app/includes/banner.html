@@ -4,3 +4,10 @@
     {% image feed_image original as img %}
     <a href="" class="image featured"><img src="{{ img.url }}" alt=""></a>
 {% endif %}
+
+{% if banner_image %}
+    {% image banner_image original as img %}
+    <section id="banner" style="background: #CCE8F4 url('{{ img.url }}')">
+{% else %}
+    <section id="banner">
+{% endif %}
