@@ -1,15 +1,13 @@
 {% load app_tags wagtailcore_tags wagtailimages_tags %}
 {% get_site_root as site_root %}
 
-{% if logo %}
-    {% if logo.image %}
-        {% image logo.image original as img %}
-        <a href="{% pageurl site_root %}" title="{{ logo.caption }}">
-            <img src="{{ img.url }}"  alt="" width="600px" style="margin-bottom: 3em;max-width: 100% !important;padding-left: 1em;padding-right: 1em;">
-        </a>
-    {% else %}
-        {% if logo.caption %}
-            <h1><a href="{% pageurl site_root %}" title="{{ logo.caption }}">{{ logo.caption }}</a></h1>
-        {% endif %}
+{% if logo_image %}
+    {% image logo_image original as img %}
+    <a href="{% pageurl site_root %}">
+        <img src="{{ img.url }}"  alt="" style="margin-bottom: 3em;max-width: 100% !important;padding-left: 1em;padding-right: 1em;">
+    </a>
+{% else %}
+    {% if logo_text %}
+        <h1><a href="{% pageurl site_root %}" title="{{ logo_text }}">{{ logo_text }}</a></h1>
     {% endif %}
 {% endif %}
