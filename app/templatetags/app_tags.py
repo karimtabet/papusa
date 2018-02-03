@@ -69,6 +69,15 @@ def top_menu_children(context, parent):
         'request': context['request'],
     }
 
+@register.inclusion_tag('app/tags/logo.html', takes_context=True)
+def logo(context):
+    logo_text = get_site_root(context).specific.logo_text.all()
+    logo_image = get_site_root(context).specific.logo_image.all()
+    return {
+        'logo': Logo.objects.filter(is_active=True).first(),
+        'request': context['request'],
+    }
+
 # Page promotion for footer
 @register.inclusion_tag(
     'app/tags/footer_promotions.html',
@@ -86,15 +95,6 @@ def footer_promotions(context, count=2):
 def contact_footer(context):
     return {
         'contact': ContactPage.objects.live().first(),
-        'request': context['request'],
-    }
-
-
-# Logo snippets
-@register.inclusion_tag('app/tags/logo.html', takes_context=True)
-def logo(context):
-    return {
-        'logo': Logo.objects.filter(is_active=True).first(),
         'request': context['request'],
     }
 
