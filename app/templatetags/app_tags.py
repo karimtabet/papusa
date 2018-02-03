@@ -71,10 +71,9 @@ def top_menu_children(context, parent):
 
 @register.inclusion_tag('app/tags/logo.html', takes_context=True)
 def logo(context):
-    logo_text = get_site_root(context).specific.logo_text.all()
-    logo_image = get_site_root(context).specific.logo_image.all()
     return {
-        'logo': Logo.objects.filter(is_active=True).first(),
+        'logo_image': get_site_root(context).specific.logo_image,
+        'logo_text': get_site_root(context).specific.logo_text,
         'request': context['request'],
     }
 
