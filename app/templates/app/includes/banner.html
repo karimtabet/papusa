@@ -3,22 +3,22 @@
 {% if feed_image %}
     {% image feed_image original as img %}
     <a href="" class="image featured"><img src="{{ img.url }}" alt=""></a>
-{% endif %}
-
-{% if banner_image %}
-    {% image banner_image original as img %}
-    <section id="banner" style="background: #CCE8F4 url('{{ img.url }}')">
 {% else %}
-    <section id="banner">
-    {{ banner_header }}
-{% endif %}
 
-{% if banner_header %}
-        <header>
-            <h2>{{ banner_header }}</h2>
-{% if banner_caption %}
-            <p>{{ banner_caption }}</p>
-{% endif %}
-        </header>
+    {% if banner_image %}
+        {% image banner_image original as img %}
+        <section id="banner" style="background: #CCE8F4 url('{{ img.url }}')">
+    {% else %}
+        <section id="banner">
+    {% endif %}
+
+    {% if banner_header %}
+            <header>
+                <h2>{{ banner_header }}</h2>
+    {% if banner_caption %}
+                <p>{{ banner_caption }}</p>
+    {% endif %}
+            </header>
+    {% endif %}
 {% endif %}
     </section>
