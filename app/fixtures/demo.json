@@ -1,1066 +1,836 @@
 [
 {
-    "pk": 1, 
-    "model": "wagtailcore.page", 
+    "model": "auth.group",
     "fields": {
-        "title": "Root", 
-        "numchild": 1, 
-        "show_in_menus": false, 
-        "live": true, 
-        "seo_title": "", 
-        "depth": 1, 
-        "search_description": "", 
+        "name": "Moderators",
+        "permissions": [
+            [
+                "access_admin",
+                "wagtailadmin",
+                "admin"
+            ],
+            [
+                "add_document",
+                "wagtaildocs",
+                "document"
+            ],
+            [
+                "change_document",
+                "wagtaildocs",
+                "document"
+            ],
+            [
+                "delete_document",
+                "wagtaildocs",
+                "document"
+            ],
+            [
+                "add_image",
+                "wagtailimages",
+                "image"
+            ],
+            [
+                "change_image",
+                "wagtailimages",
+                "image"
+            ],
+            [
+                "delete_image",
+                "wagtailimages",
+                "image"
+            ]
+        ]
+    }
+},
+{
+    "model": "auth.group",
+    "fields": {
+        "name": "Editors",
+        "permissions": [
+            [
+                "access_admin",
+                "wagtailadmin",
+                "admin"
+            ],
+            [
+                "add_document",
+                "wagtaildocs",
+                "document"
+            ],
+            [
+                "change_document",
+                "wagtaildocs",
+                "document"
+            ],
+            [
+                "delete_document",
+                "wagtaildocs",
+                "document"
+            ],
+            [
+                "add_image",
+                "wagtailimages",
+                "image"
+            ],
+            [
+                "change_image",
+                "wagtailimages",
+                "image"
+            ],
+            [
+                "delete_image",
+                "wagtailimages",
+                "image"
+            ]
+        ]
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$36000$iGLfgEIslz72$sksj5PXYNSr1UkGtCnxGQCWo4uSTIWhc6DF7oPDkWFE=",
+        "last_login": "2018-03-05T14:48:44.747Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2018-03-05T14:48:30.318Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1,
+    "fields": {
+        "name": "banner",
+        "slug": "banner"
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 1,
+    "fields": {
+        "tag": 1,
         "content_type": [
-            "wagtailcore", 
-            "page"
-        ], 
-        "has_unpublished_changes": false, 
-        "owner": null, 
-        "path": "0001", 
-        "url_path": "/", 
-        "slug": "root"
+            "wagtailimages",
+            "image"
+        ],
+        "object_id": 1
     }
 },
 {
-    "pk": 2, 
-    "model": "wagtailcore.page", 
+    "model": "app.sidebaritem",
+    "pk": 1,
     "fields": {
-        "title": "Home page", 
-        "numchild": 5, 
-        "show_in_menus": true, 
-        "live": true, 
-        "seo_title": "", 
-        "depth": 2, 
-        "search_description": "", 
-        "content_type": [
-            "app", 
-            "homepage"
-        ], 
-        "has_unpublished_changes": false, 
-        "owner": null, 
-        "path": "00010002", 
-        "url_path": "/home-page/", 
-        "slug": "home-page"
+        "link_external": "",
+        "link_page": 3,
+        "link_document": null,
+        "image": 1,
+        "title": "Sidebar",
+        "body": "A sidebar",
+        "button_text": "Go home",
+        "show_related_links": false
     }
 },
 {
-    "pk": 4, 
-    "model": "wagtailcore.page", 
-    "fields": {
-        "title": "Events index", 
-        "numchild": 2, 
-        "show_in_menus": true, 
-        "live": true, 
-        "seo_title": "", 
-        "depth": 3, 
-        "search_description": "", 
-        "content_type": [
-            "app", 
-            "eventindexpage"
-        ], 
-        "has_unpublished_changes": false, 
-        "owner": null, 
-        "path": "000100020001", 
-        "url_path": "/home-page/events-index/", 
-        "slug": "events-index"
-    }
-},
-{
-    "pk": 5, 
-    "model": "wagtailcore.page", 
-    "fields": {
-        "title": "Blog index", 
-        "numchild": 3, 
-        "show_in_menus": true, 
-        "live": true, 
-        "seo_title": "", 
-        "depth": 3, 
-        "search_description": "", 
-        "content_type": [
-            "app", 
-            "blogindexpage"
-        ], 
-        "has_unpublished_changes": false, 
-        "owner": null, 
-        "path": "000100020002", 
-        "url_path": "/home-page/blog-index/", 
-        "slug": "blog-index"
-    }
-},
-{
-    "pk": 6, 
-    "model": "wagtailcore.page", 
-    "fields": {
-        "title": "Standard index", 
-        "numchild": 4, 
-        "show_in_menus": true, 
-        "live": true, 
-        "seo_title": "", 
-        "depth": 3, 
-        "search_description": "", 
-        "content_type": [
-            "app", 
-            "standardindexpage"
-        ], 
-        "has_unpublished_changes": false, 
-        "owner": null, 
-        "path": "000100020003", 
-        "url_path": "/home-page/standard-index/", 
-        "slug": "standard-index"
-    }
-},
-{
-    "pk": 8, 
-    "model": "wagtailcore.page", 
-    "fields": {
-        "title": "Event 1", 
-        "numchild": 0, 
-        "show_in_menus": false, 
-        "live": true, 
-        "seo_title": "", 
-        "depth": 4, 
-        "search_description": "At first glance, the wagtails appear to be divided into a yellow-bellied group and a white-bellied one", 
-        "content_type": [
-            "app", 
-            "eventpage"
-        ], 
-        "has_unpublished_changes": false, 
-        "owner": null, 
-        "path": "0001000200010001", 
-        "url_path": "/home-page/events-index/event-1/", 
-        "slug": "event-1"
-    }
-},
-{
-    "pk": 9, 
-    "model": "wagtailcore.page", 
-    "fields": {
-        "title": "Event 2", 
-        "numchild": 0, 
-        "show_in_menus": false, 
-        "live": true, 
-        "seo_title": "", 
-        "depth": 4, 
-        "search_description": "Three species are poly- or paraphyletic in the present taxonomical arrangement and either subspecies need to be reassigned and/or species split up. The Blue-headed Wagtail (AKA Yellow Wagtail and many other names), especially, has always been a taxonomical nightmare with over a dozen currently accepted subspecies and many more invalid ones. The two remaining \"monochrome\" species, Mekong and African Pied Wagtail may be closely related, or a most striking example of convergent evolution.", 
-        "content_type": [
-            "app", 
-            "eventpage"
-        ], 
-        "has_unpublished_changes": false, 
-        "owner": null, 
-        "path": "0001000200010002", 
-        "url_path": "/home-page/events-index/event-2/", 
-        "slug": "event-2"
-    }
-},
-{
-    "pk": 10, 
-    "model": "wagtailcore.page", 
-    "fields": {
-        "title": "Standard page 1", 
-        "numchild": 0, 
-        "show_in_menus": true, 
-        "live": true, 
-        "seo_title": "", 
-        "depth": 4, 
-        "search_description": "Wagtails are slender, often colourful, ground-feeding insectivores of open country in the Old World. They are ground nesters.", 
-        "content_type": [
-            "app", 
-            "standardpage"
-        ], 
-        "has_unpublished_changes": false, 
-        "owner": null, 
-        "path": "0001000200030001", 
-        "url_path": "/home-page/standard-index/standard-page-1/", 
-        "slug": "standard-page-1"
-    }
-},
-{
-    "pk": 12, 
-    "model": "wagtailcore.page", 
-    "fields": {
-        "title": "Contact page", 
-        "numchild": 0, 
-        "show_in_menus": true, 
-        "live": true, 
-        "seo_title": "", 
-        "depth": 3, 
-        "search_description": "The origin of the genus appears to be in the general area of Eastern Siberia/Mongolia. Wagtails spread rapidly across Eurasia and dispersed to Africa in the Zanclean...", 
-        "content_type": [
-            "app", 
-            "contactpage"
-        ], 
-        "has_unpublished_changes": false, 
-        "owner": null, 
-        "path": "000100020005", 
-        "url_path": "/home-page/contact-page/", 
-        "slug": "contact-page"
-    }
-},
-{
-    "pk": 13, 
-    "model": "wagtailcore.page", 
-    "fields": {
-        "title": "James Joyce", 
-        "numchild": 0, 
-        "show_in_menus": true, 
-        "live": true, 
-        "seo_title": "", 
-        "depth": 4, 
-        "search_description": "The origin of the genus appears to be in the general area of Eastern Siberia/Mongolia. Wagtails spread rapidly across Eurasia and dispersed to Africa", 
-        "content_type": [
-            "app", 
-            "personpage"
-        ], 
-        "has_unpublished_changes": false, 
-        "owner": null, 
-        "path": "0001000200040001", 
-        "url_path": "/home-page/people/james-joyce/", 
-        "slug": "james-joyce"
-    }
-},
-{
-    "pk": 14, 
-    "model": "wagtailcore.page", 
-    "fields": {
-        "title": "David Mitchell", 
-        "numchild": 0, 
-        "show_in_menus": true, 
-        "live": true, 
-        "seo_title": "", 
-        "depth": 4, 
-        "search_description": "Recent studies have suggested instead that it is a signal of vigilance that may aid to deter potential predators.", 
-        "content_type": [
-            "app", 
-            "personpage"
-        ], 
-        "has_unpublished_changes": false, 
-        "owner": null, 
-        "path": "0001000200040002", 
-        "url_path": "/home-page/people/david-mitchell/", 
-        "slug": "david-mitchell"
-    }
-},
-{
-    "pk": 15, 
-    "model": "wagtailcore.page", 
-    "fields": {
-        "title": "Standard page 2", 
-        "numchild": 0, 
-        "show_in_menus": true, 
-        "live": true, 
-        "seo_title": "", 
-        "depth": 4, 
-        "search_description": "The remaining five species are highly variable morphologically and their relationships with each other and with the two clades have not yet been satisfactorily explained.", 
-        "content_type": [
-            "app", 
-            "standardpage"
-        ], 
-        "has_unpublished_changes": false, 
-        "owner": null, 
-        "path": "0001000200030002", 
-        "url_path": "/home-page/standard-index/standard-page-2/", 
-        "slug": "standard-page-2"
-    }
-},
-{
-    "pk": 16, 
-    "model": "wagtailcore.page", 
-    "fields": {
-        "title": "Blog post", 
-        "numchild": 0, 
-        "show_in_menus": false, 
-        "live": true, 
-        "seo_title": "", 
-        "depth": 4, 
-        "search_description": "The origin of the genus appears to be in the general area of Eastern Siberia/Mongolia. Wagtails spread rapidly across Eurasia and dispersed to Africa in the Zanclean (Early Pliocene) where the sub-Saharan lineage was later isolated. The African Pied Wagtail (and possibly the Mekong Wagtail) diverged prior to the massive radiation of the white-bellied black-throated and most yellow-bellied forms, all of which took place during the late Piacenzian (early Late Pliocene), c. 3 mya.", 
-        "content_type": [
-            "app", 
-            "blogpage"
-        ], 
-        "has_unpublished_changes": false, 
-        "owner": null, 
-        "path": "0001000200020001", 
-        "url_path": "/home-page/blog-index/blog-post/", 
-        "slug": "blog-post"
-    }
-},
-{
-    "pk": 17, 
-    "model": "wagtailcore.page", 
-    "fields": {
-        "title": "Photo credits", 
-        "numchild": 0, 
-        "show_in_menus": false, 
-        "live": true, 
-        "seo_title": "", 
-        "depth": 4, 
-        "search_description": "", 
-        "content_type": [
-            "app", 
-            "standardpage"
-        ], 
-        "has_unpublished_changes": false, 
-        "owner": null, 
-        "path": "0001000200030007", 
-        "url_path": "/home-page/standard-index/photo-credits/", 
-        "slug": "photo-credits"
-    }
-},
-{
-    "pk": 18, 
-    "model": "wagtailcore.page", 
-    "fields": {
-        "title": "Blog post again", 
-        "numchild": 0, 
-        "show_in_menus": false, 
-        "live": true, 
-        "seo_title": "", 
-        "depth": 4, 
-        "search_description": "Wagtails are slender, often colourful, ground-feeding insectivores of open country in the Old World. They are ground nesters, laying up to six speckled eggs at a time. Among their most conspicuous behaviours is a near constant tail wagging, a trait that has given the birds their common name. In spite of the ubiquity of the behaviour and observations of it, the reasons for it are poorly understood. It has been suggested that it may flush up prey, or that it may signal submissiveness to other wagtails. Recent studies have suggested instead that it is a signal of vigilance that may aid to deter potential predators.", 
-        "content_type": [
-            "app", 
-            "blogpage"
-        ], 
-        "has_unpublished_changes": false, 
-        "owner": null, 
-        "path": "0001000200020002", 
-        "url_path": "/home-page/blog-index/blog-post-again/", 
-        "slug": "blog-post-again"
-    }
-},
-{
-    "pk": 19, 
-    "model": "wagtailcore.page", 
-    "fields": {
-        "title": "Another blog post", 
-        "numchild": 0, 
-        "show_in_menus": false, 
-        "live": true, 
-        "seo_title": "", 
-        "depth": 4, 
-        "search_description": "Three species are poly- or paraphyletic in the present taxonomical arrangement and either subspecies need to be reassigned and/or species split up. The Blue-headed Wagtail (AKA Yellow Wagtail and many other names), especially, has always been a taxonomical nightmare with over a dozen currently accepted subspecies and many more invalid ones. The two remaining \"monochrome\" species, Mekong and African Pied Wagtail may be closely related, or a most striking example of convergent evolution.", 
-        "content_type": [
-            "app", 
-            "blogpage"
-        ], 
-        "has_unpublished_changes": false, 
-        "owner": null, 
-        "path": "0001000200020003", 
-        "url_path": "/home-page/blog-index/another-blog-post/", 
-        "slug": "another-blog-post"
-    }
-},
-{
-    "pk": 20, 
-    "model": "wagtailcore.page", 
-    "fields": {
-        "title": "People", 
-        "numchild": 2, 
-        "show_in_menus": true, 
-        "live": true, 
-        "seo_title": "", 
-        "depth": 3, 
-        "search_description": "", 
-        "content_type": [
-            "app", 
-            "standardindexpage"
-        ], 
-        "has_unpublished_changes": false, 
-        "owner": null, 
-        "path": "000100020004", 
-        "url_path": "/home-page/people/", 
-        "slug": "people"
-    }
-},
-{
-    "pk": 21, 
-    "model": "wagtailcore.page", 
-    "fields": {
-        "title": "A deeper menu level", 
-        "numchild": 2, 
-        "show_in_menus": true, 
-        "live": true, 
-        "seo_title": "", 
-        "depth": 4, 
-        "search_description": "", 
-        "content_type": [
-            "app", 
-            "standardindexpage"
-        ], 
-        "has_unpublished_changes": false, 
-        "owner": null, 
-        "path": "0001000200030008", 
-        "url_path": "/home-page/standard-index/a-deeper-menu-level/", 
-        "slug": "a-deeper-menu-level"
-    }
-},
-{
-    "pk": 22, 
-    "model": "wagtailcore.page", 
-    "fields": {
-        "title": "A grandchild page", 
-        "numchild": 0, 
-        "show_in_menus": true, 
-        "live": true, 
-        "seo_title": "", 
-        "depth": 5, 
-        "search_description": "The origin of the genus appears to be in the general area of Eastern Siberia/Mongolia. Wagtails spread rapidly across Eurasia and dispersed to Africa in the Zanclean (Early Pliocene) where the sub-Saharan lineage was later isolated. The African Pied Wagtail (and possibly the Mekong Wagtail) diverged prior to the massive radiation of the white-bellied black-throated and most yellow-bellied forms, all of which took place during the late Piacenzian (early Late Pliocene), c. 3 mya.", 
-        "content_type": [
-            "app", 
-            "standardpage"
-        ], 
-        "has_unpublished_changes": false, 
-        "owner": null, 
-        "path": "00010002000300080001", 
-        "url_path": "/home-page/standard-index/a-deeper-menu-level/a-grandchild-page/", 
-        "slug": "a-grandchild-page"
-    }
-},
-{
-    "pk": 23, 
-    "model": "wagtailcore.page", 
-    "fields": {
-        "title": "Another grandchild page", 
-        "numchild": 0, 
-        "show_in_menus": true, 
-        "live": true, 
-        "seo_title": "", 
-        "depth": 5, 
-        "search_description": "The origin of the genus appears to be in the general area of Eastern Siberia/Mongolia. Wagtails spread rapidly across Eurasia and dispersed to Africa in the Zanclean (Early Pliocene) where the sub-Saharan lineage was later isolated. The African Pied Wagtail (and possibly the Mekong Wagtail) diverged prior to the massive radiation of the white-bellied black-throated and most yellow-bellied forms, all of which took place during the late Piacenzian (early Late Pliocene), c. 3 mya.", 
-        "content_type": [
-            "app", 
-            "standardpage"
-        ], 
-        "has_unpublished_changes": false, 
-        "owner": null, 
-        "path": "00010002000300080002", 
-        "url_path": "/home-page/standard-index/a-deeper-menu-level/another-grandchild-page/", 
-        "slug": "another-grandchild-page"
-    }
-},
-{
-    "pk": 4, 
-    "model": "wagtailimages.image", 
-    "fields": {
-        "title": "Wagtail by Mark Harkin", 
-        "created_at": "2014-02-06T10:14:47.173Z", 
-        "height": 427, 
-        "width": 640, 
-        "file": "original_images/wagtail_by_markyharky.jpg", 
-        "uploaded_by_user": null
-    }
-},
-{
-    "pk": 5, 
-    "model": "wagtailimages.image", 
-    "fields": {
-        "title": "James Joyce", 
-        "created_at": "2014-02-06T10:37:10.518Z", 
-        "height": 392, 
-        "width": 500, 
-        "file": "original_images/James_Joyce_in_1915.jpg", 
-        "uploaded_by_user": null
-    }
-},
-{
-    "pk": 6, 
-    "model": "wagtailimages.image", 
-    "fields": {
-        "title": "David Mitchell", 
-        "created_at": "2014-02-06T10:42:46.536Z", 
-        "height": 282, 
-        "width": 360, 
-        "file": "original_images/David_Mitchell_by_Kubik.JPG", 
-        "uploaded_by_user": null
-    }
-},
-{
-    "pk": 7, 
-    "model": "wagtailimages.image", 
-    "fields": {
-        "title": "Wagtail by Joe Buckingham", 
-        "created_at": "2014-02-06T10:49:29.579Z", 
-        "height": 397, 
-        "width": 640, 
-        "file": "original_images/wagtail_by_joe_buckingham.jpg", 
-        "uploaded_by_user": null
-    }
-},
-{
-    "pk": 8, 
-    "model": "wagtailimages.image", 
-    "fields": {
-        "title": "Wagtail by fs-phil", 
-        "created_at": "2014-02-06T10:54:29.963Z", 
-        "height": 397, 
-        "width": 640, 
-        "file": "original_images/wagtail_by_fs-phil.jpg", 
-        "uploaded_by_user": null
-    }
-},
-{
-    "pk": 9, 
-    "model": "wagtailimages.image", 
-    "fields": {
-        "title": "White wagtail by Koshy Koshy", 
-        "created_at": "2014-02-06T10:57:05.536Z", 
-        "height": 397, 
-        "width": 640, 
-        "file": "original_images/white_wagtail_by_Koshyk.jpg", 
-        "uploaded_by_user": null
-    }
-},
-{
-    "pk": 10, 
-    "model": "wagtailimages.image", 
-    "fields": {
-        "title": "Pied wagtail by Marie Hale", 
-        "created_at": "2014-02-06T11:05:12.370Z", 
-        "height": 397, 
-        "width": 640, 
-        "file": "original_images/pied_wagtail_by_Marie_Hale.jpg", 
-        "uploaded_by_user": null
-    }
-},
-{
-    "pk": 11, 
-    "model": "wagtailimages.image", 
-    "fields": {
-        "title": "Wagtail at Borovoye, Kazakhstan by Ken and Nyetta", 
-        "created_at": "2014-02-06T11:08:09.355Z", 
-        "height": 397, 
-        "width": 640, 
-        "file": "original_images/wagtail_at_Borovoye_Kazakhstan_by_Ken_and_Nyetta.jpg", 
-        "uploaded_by_user": null
-    }
-},
-{
-    "pk": 12, 
-    "model": "wagtailimages.image", 
-    "fields": {
-        "title": "Wagtail Sproing by Jim Bendon", 
-        "created_at": "2014-02-06T11:10:01.185Z", 
-        "height": 397, 
-        "width": 640, 
-        "file": "original_images/wagtail_sproing_by_Jim_Bendon.jpg", 
-        "uploaded_by_user": null
-    }
-},
-{
-    "pk": 13, 
-    "model": "wagtailimages.image", 
-    "fields": {
-        "title": "Hopalong wagtail by Ruth Flickr", 
-        "created_at": "2014-02-06T11:15:32.454Z", 
-        "height": 397, 
-        "width": 640, 
-        "file": "original_images/hopalong_wagtail_by_Ruth_Flickr.jpg", 
-        "uploaded_by_user": null
-    }
-},
-{
-    "pk": 14, 
-    "model": "wagtailimages.image", 
-    "fields": {
-        "title": "Wagtail collects insects by Margrit", 
-        "created_at": "2014-02-06T11:21:13.596Z", 
-        "height": 397, 
-        "width": 640, 
-        "file": "original_images/wagtail_collects_insects_by_Maggi_94.jpg", 
-        "uploaded_by_user": null
-    }
-},
-{
-    "pk": 15, 
-    "model": "wagtailimages.image", 
-    "fields": {
-        "title": "Grey wagtail by Lip Kee", 
-        "created_at": "2014-02-06T11:23:36.409Z", 
-        "height": 397, 
-        "width": 640, 
-        "file": "original_images/grey_wagtail_by_lip_kee.jpg", 
-        "uploaded_by_user": null
-    }
-},
-{
-    "pk": 1, 
-    "model": "app.advert", 
-    "fields": {
-        "url": "", 
-        "text": "Photo credits", 
-        "page": 17
-    }
-},
-{
+    "model": "app.sidebaritem",
     "pk": 2,
-    "model": "app.advert",
     "fields": {
-        "url": "",
-        "text": "Contact",
-        "page": 12
+        "link_external": "",
+        "link_page": null,
+        "link_document": null,
+        "image": null,
+        "title": "It's a form",
+        "body": "Fill it",
+        "button_text": null,
+        "show_related_links": false
     }
 },
 {
-    "pk": 5, 
-    "model": "app.blogindexpage", 
+    "model": "app.homepagepromotion",
+    "pk": 1,
     "fields": {
-        "intro": "<p>Three species are poly- or paraphyletic in the present taxonomical arrangement and either subspecies need to be reassigned and/or species split up. The Blue-headed Wagtail (AKA Yellow Wagtail and many other names), especially, has always been a taxonomical nightmare with over a dozen currently accepted subspecies and many more invalid ones. The two remaining \"monochrome\" species, Mekong and African Pied Wagtail may be closely related, or a most striking example of convergent evolution.</p>"
+        "sort_order": 0,
+        "promotion_page": 4,
+        "header": "Our Projects",
+        "page": 3
     }
 },
 {
-    "pk": 1, 
-    "model": "app.blogindexpagerelatedlink", 
+    "model": "app.homepagefooterpromotion",
+    "pk": 1,
     "fields": {
-        "link_page": 4, 
-        "title": "Events index", 
-        "link_external": "", 
-        "sort_order": 0, 
-        "link_document": null, 
+        "sort_order": 0,
+        "promotion_page": 4,
+        "header": "Our Projects",
+        "page": 3
+    }
+},
+{
+    "model": "app.homepagefooterpromotion",
+    "pk": 2,
+    "fields": {
+        "sort_order": 1,
+        "promotion_page": 4,
+        "header": "Our Projects",
+        "page": 3
+    }
+},
+{
+    "model": "app.homepage",
+    "pk": 3,
+    "fields": {
+        "logo_text": "Papusa",
+        "logo_image": null,
+        "banner_image": 1,
+        "banner_header": "Welcome to Papusa",
+        "banner_caption": "A Wagtail CMS Project",
+        "body": "[{\"value\": \"Papusa Home Page\", \"type\": \"h2\"}]"
+    }
+},
+{
+    "model": "app.standardindexpage",
+    "pk": 4,
+    "fields": {
+        "intro": "<p>Our list of projects<br/></p>",
+        "feed_image": null
+    }
+},
+{
+    "model": "app.standardpagesidebaritem",
+    "pk": 1,
+    "fields": {
+        "sort_order": 0,
         "page": 5
     }
 },
 {
-    "pk": 16, 
-    "model": "app.blogpage", 
+    "model": "app.standardpage",
+    "pk": 5,
     "fields": {
-        "body": "[{\"type\": \"paragraph\", \"value\": \"<p>mtDNA cytochrome b and NADH dehydrogenase subunit 2 sequence data (Voelker, 2002) is of limited use: the suspicion that there is a superspecies of probably 3 white-bellied, black-throated wagtails is confirmed. Also, there is another superspecies in sub-Saharan Africa, three white-throated species with a black breast-band. The remaining five species are highly variable morphologically and their relationships with each other and with the two clades have not yet been satisfactorily explained.</p>\"}, {\"type\": \"paragraph\", \"value\": \"<p>The origin of the genus appears to be in the general area of Eastern Siberia/Mongolia. Wagtails spread rapidly across Eurasia and dispersed to Africa in the Zanclean (Early Pliocene) where the sub-Saharan lineage was later isolated. The African Pied Wagtail (and possibly the Mekong Wagtail) diverged prior to the massive radiation of the white-bellied black-throated and most yellow-bellied forms, all of which took place during the late Piacenzian (early Late Pliocene), c. 3 mya.</p>\"}, {\"type\": \"aligned_image\", \"value\": {\"caption\": \"<p>Also, there is another superspecies in sub-Saharan Africa<br/></p>\", \"image\": 13, \"alignment\": \"left\"}}, {\"type\": \"paragraph\", \"value\": \"<p>mtDNA cytochrome b and NADH dehydrogenase subunit 2 sequence data (Voelker, 2002) is of limited use: the suspicion that there is a superspecies of probably 3 white-bellied, black-throated wagtails is confirmed. Also, there is another superspecies in sub-Saharan Africa, three white-throated species with a black breast-band. The remaining five species are highly variable morphologically and their relationships with each other and with the two clades have not yet been satisfactorily explained.</p>\"}, {\"type\": \"paragraph\", \"value\": \"<p>The origin of the genus appears to be in the general area of Eastern Siberia/Mongolia. Wagtails spread rapidly across Eurasia and dispersed to Africa in the Zanclean (Early Pliocene) where the sub-Saharan lineage was later isolated. The African Pied Wagtail (and possibly the Mekong Wagtail) diverged prior to the massive radiation of the white-bellied black-throated and most yellow-bellied forms, all of which took place during the late Piacenzian (early Late Pliocene), c. 3 mya.</p>\"}, {\"type\": \"aligned_image\", \"value\": {\"caption\": \"<p>The origin of the genus appears to be in the general area of Eastern Siberia/Mongolia</p>\", \"image\": 15, \"alignment\": \"right\"}}, {\"type\": \"paragraph\", \"value\": \"<p>mtDNA cytochrome b and NADH dehydrogenase subunit 2 sequence data (Voelker, 2002) is of limited use: the suspicion that there is a superspecies of probably 3 white-bellied, black-throated wagtails is confirmed. Also, there is another superspecies in sub-Saharan Africa, three white-throated species with a black breast-band. The remaining five species are highly variable morphologically and their relationships with each other and with the two clades have not yet been satisfactorily explained.</p>\"}, {\"type\": \"aligned_image\", \"value\": {\"caption\": \"<p>The remaining five species are highly variable morphologically</p>\", \"image\": 14, \"alignment\": \"full\"}}, {\"type\": \"paragraph\", \"value\": \"<p>mtDNA cytochrome b and NADH dehydrogenase subunit 2 sequence data (Voelker, 2002) is of limited use: the suspicion that there is a superspecies of probably 3 white-bellied, black-throated wagtails is confirmed. Also, there is another superspecies in sub-Saharan Africa, three white-throated species with a black breast-band. The remaining five species are highly variable morphologically and their relationships with each other and with the two clades have not yet been satisfactorily explained.</p>\"}, {\"type\": \"pullquote\", \"value\": {\"quote\": \"There is another superspecies in sub-Saharan Africa, three white-throated species with a black breast-band\", \"attribution\": \"Wikipedia\"}}, {\"type\": \"paragraph\", \"value\": \"<p>mtDNA cytochrome b and NADH dehydrogenase subunit 2 sequence data (Voelker, 2002) is of limited use: the suspicion that there is a superspecies of probably 3 white-bellied, black-throated wagtails is confirmed. Also, there is another superspecies in sub-Saharan Africa, three white-throated species with a black breast-band. The remaining five species are highly variable morphologically and their relationships with each other and with the two clades have not yet been satisfactorily explained.</p>\"}]",
-        "date": "2013-12-02", 
-        "feed_image": 7
+        "intro": "<p><br/></p>",
+        "body": "<h2>Right Sidebar<br/></h2><p>This page has a right sidebar<br/></p>",
+        "sidebar": "right_sidebar",
+        "feed_image": 1
     }
 },
 {
-    "pk": 18, 
-    "model": "app.blogpage", 
+    "model": "app.formfield",
+    "pk": 1,
     "fields": {
-        "body": "[{\"type\": \"paragraph\", \"value\": \"<p>mtDNA cytochrome b and NADH dehydrogenase subunit 2 sequence data (Voelker, 2002) is of limited use: the suspicion that there is a superspecies of probably 3 white-bellied, black-throated wagtails is confirmed. Also, there is another superspecies in sub-Saharan Africa, three white-throated species with a black breast-band. The remaining five species are highly variable morphologically and their relationships with each other and with the two clades have not yet been satisfactorily explained.</p>\"}, {\"type\": \"paragraph\", \"value\": \"<p>The origin of the genus appears to be in the general area of Eastern Siberia/Mongolia. Wagtails spread rapidly across Eurasia and dispersed to Africa in the Zanclean (Early Pliocene) where the sub-Saharan lineage was later isolated. The African Pied Wagtail (and possibly the Mekong Wagtail) diverged prior to the massive radiation of the white-bellied black-throated and most yellow-bellied forms, all of which took place during the late Piacenzian (early Late Pliocene), c. 3 mya.</p>\"}, {\"type\": \"aligned_image\", \"value\": {\"caption\": \"<p>Also, there is another superspecies in sub-Saharan Africa<br/></p>\", \"image\": 13, \"alignment\": \"left\"}}, {\"type\": \"paragraph\", \"value\": \"<p>mtDNA cytochrome b and NADH dehydrogenase subunit 2 sequence data (Voelker, 2002) is of limited use: the suspicion that there is a superspecies of probably 3 white-bellied, black-throated wagtails is confirmed. Also, there is another superspecies in sub-Saharan Africa, three white-throated species with a black breast-band. The remaining five species are highly variable morphologically and their relationships with each other and with the two clades have not yet been satisfactorily explained.</p>\"}, {\"type\": \"paragraph\", \"value\": \"<p>The origin of the genus appears to be in the general area of Eastern Siberia/Mongolia. Wagtails spread rapidly across Eurasia and dispersed to Africa in the Zanclean (Early Pliocene) where the sub-Saharan lineage was later isolated. The African Pied Wagtail (and possibly the Mekong Wagtail) diverged prior to the massive radiation of the white-bellied black-throated and most yellow-bellied forms, all of which took place during the late Piacenzian (early Late Pliocene), c. 3 mya.</p>\"}, {\"type\": \"aligned_image\", \"value\": {\"caption\": \"<p>The origin of the genus appears to be in the general area of Eastern Siberia/Mongolia</p>\", \"image\": 15, \"alignment\": \"right\"}}, {\"type\": \"paragraph\", \"value\": \"<p>mtDNA cytochrome b and NADH dehydrogenase subunit 2 sequence data (Voelker, 2002) is of limited use: the suspicion that there is a superspecies of probably 3 white-bellied, black-throated wagtails is confirmed. Also, there is another superspecies in sub-Saharan Africa, three white-throated species with a black breast-band. The remaining five species are highly variable morphologically and their relationships with each other and with the two clades have not yet been satisfactorily explained.</p>\"}, {\"type\": \"aligned_image\", \"value\": {\"caption\": \"<p>The remaining five species are highly variable morphologically</p>\", \"image\": 14, \"alignment\": \"full\"}}, {\"type\": \"paragraph\", \"value\": \"<p>mtDNA cytochrome b and NADH dehydrogenase subunit 2 sequence data (Voelker, 2002) is of limited use: the suspicion that there is a superspecies of probably 3 white-bellied, black-throated wagtails is confirmed. Also, there is another superspecies in sub-Saharan Africa, three white-throated species with a black breast-band. The remaining five species are highly variable morphologically and their relationships with each other and with the two clades have not yet been satisfactorily explained.</p>\"}, {\"type\": \"pullquote\", \"value\": {\"quote\": \"There is another superspecies in sub-Saharan Africa, three white-throated species with a black breast-band\", \"attribution\": \"Wikipedia\"}}, {\"type\": \"paragraph\", \"value\": \"<p>mtDNA cytochrome b and NADH dehydrogenase subunit 2 sequence data (Voelker, 2002) is of limited use: the suspicion that there is a superspecies of probably 3 white-bellied, black-throated wagtails is confirmed. Also, there is another superspecies in sub-Saharan Africa, three white-throated species with a black breast-band. The remaining five species are highly variable morphologically and their relationships with each other and with the two clades have not yet been satisfactorily explained.</p>\"}]",
-        "date": "2014-01-10", 
-        "feed_image": 15
+        "sort_order": 0,
+        "label": "A Form Field",
+        "field_type": "singleline",
+        "required": true,
+        "choices": "",
+        "default_value": "",
+        "help_text": "",
+        "page": 6
     }
 },
 {
-    "pk": 19, 
-    "model": "app.blogpage", 
+    "model": "app.formpagesidebaritem",
+    "pk": 2,
     "fields": {
-        "body": "[{\"type\": \"paragraph\", \"value\": \"<p>mtDNA cytochrome b and NADH dehydrogenase subunit 2 sequence data (Voelker, 2002) is of limited use: the suspicion that there is a superspecies of probably 3 white-bellied, black-throated wagtails is confirmed. Also, there is another superspecies in sub-Saharan Africa, three white-throated species with a black breast-band. The remaining five species are highly variable morphologically and their relationships with each other and with the two clades have not yet been satisfactorily explained.</p>\"}, {\"type\": \"paragraph\", \"value\": \"<p>The origin of the genus appears to be in the general area of Eastern Siberia/Mongolia. Wagtails spread rapidly across Eurasia and dispersed to Africa in the Zanclean (Early Pliocene) where the sub-Saharan lineage was later isolated. The African Pied Wagtail (and possibly the Mekong Wagtail) diverged prior to the massive radiation of the white-bellied black-throated and most yellow-bellied forms, all of which took place during the late Piacenzian (early Late Pliocene), c. 3 mya.</p>\"}, {\"type\": \"aligned_image\", \"value\": {\"caption\": \"<p>Also, there is another superspecies in sub-Saharan Africa<br/></p>\", \"image\": 13, \"alignment\": \"left\"}}, {\"type\": \"paragraph\", \"value\": \"<p>mtDNA cytochrome b and NADH dehydrogenase subunit 2 sequence data (Voelker, 2002) is of limited use: the suspicion that there is a superspecies of probably 3 white-bellied, black-throated wagtails is confirmed. Also, there is another superspecies in sub-Saharan Africa, three white-throated species with a black breast-band. The remaining five species are highly variable morphologically and their relationships with each other and with the two clades have not yet been satisfactorily explained.</p>\"}, {\"type\": \"paragraph\", \"value\": \"<p>The origin of the genus appears to be in the general area of Eastern Siberia/Mongolia. Wagtails spread rapidly across Eurasia and dispersed to Africa in the Zanclean (Early Pliocene) where the sub-Saharan lineage was later isolated. The African Pied Wagtail (and possibly the Mekong Wagtail) diverged prior to the massive radiation of the white-bellied black-throated and most yellow-bellied forms, all of which took place during the late Piacenzian (early Late Pliocene), c. 3 mya.</p>\"}, {\"type\": \"aligned_image\", \"value\": {\"caption\": \"<p>The origin of the genus appears to be in the general area of Eastern Siberia/Mongolia</p>\", \"image\": 15, \"alignment\": \"right\"}}, {\"type\": \"paragraph\", \"value\": \"<p>mtDNA cytochrome b and NADH dehydrogenase subunit 2 sequence data (Voelker, 2002) is of limited use: the suspicion that there is a superspecies of probably 3 white-bellied, black-throated wagtails is confirmed. Also, there is another superspecies in sub-Saharan Africa, three white-throated species with a black breast-band. The remaining five species are highly variable morphologically and their relationships with each other and with the two clades have not yet been satisfactorily explained.</p>\"}, {\"type\": \"aligned_image\", \"value\": {\"caption\": \"<p>The remaining five species are highly variable morphologically</p>\", \"image\": 14, \"alignment\": \"full\"}}, {\"type\": \"paragraph\", \"value\": \"<p>mtDNA cytochrome b and NADH dehydrogenase subunit 2 sequence data (Voelker, 2002) is of limited use: the suspicion that there is a superspecies of probably 3 white-bellied, black-throated wagtails is confirmed. Also, there is another superspecies in sub-Saharan Africa, three white-throated species with a black breast-band. The remaining five species are highly variable morphologically and their relationships with each other and with the two clades have not yet been satisfactorily explained.</p>\"}, {\"type\": \"pullquote\", \"value\": {\"quote\": \"There is another superspecies in sub-Saharan Africa, three white-throated species with a black breast-band\", \"attribution\": \"Wikipedia\"}}, {\"type\": \"paragraph\", \"value\": \"<p>mtDNA cytochrome b and NADH dehydrogenase subunit 2 sequence data (Voelker, 2002) is of limited use: the suspicion that there is a superspecies of probably 3 white-bellied, black-throated wagtails is confirmed. Also, there is another superspecies in sub-Saharan Africa, three white-throated species with a black breast-band. The remaining five species are highly variable morphologically and their relationships with each other and with the two clades have not yet been satisfactorily explained.</p>\"}]", 
-        "date": "2014-02-01", 
-        "feed_image": 14
+        "sort_order": 0,
+        "page": 6
     }
 },
 {
-    "pk": 1, 
-    "model": "app.blogpagecarouselitem", 
+    "model": "app.formpage",
+    "pk": 6,
     "fields": {
-        "link_page": null, 
-        "embed_url": "", 
-        "image": 9, 
-        "link_external": "http://www.flickr.com/photos/kkoshy/", 
-        "caption": "White wagtail by Koshy Koshy", 
-        "sort_order": 0, 
-        "link_document": null, 
-        "page": 16
+        "to_address": "",
+        "from_address": "",
+        "subject": "",
+        "intro": "<p>A Form<br/></p>",
+        "thank_you_text": "<p>Cheers</p>",
+        "sidebar": "right_sidebar",
+        "feed_image": 1
     }
 },
 {
-    "pk": 2, 
-    "model": "app.blogpagecarouselitem", 
+    "model": "wagtailcore.site",
     "fields": {
-        "link_page": null, 
-        "embed_url": "", 
-        "image": 7, 
-        "link_external": "http://www.flickr.com/photos/jim_bendon_1957/", 
-        "caption": "Wagtail by Jim Bendon", 
-        "sort_order": 1, 
-        "link_document": null, 
-        "page": 16
+        "hostname": "localhost",
+        "port": 80,
+        "site_name": null,
+        "root_page": 3,
+        "is_default_site": true
     }
 },
 {
-    "pk": 4, 
-    "model": "app.blogpagetag", 
+    "model": "wagtailcore.page",
+    "pk": 1,
     "fields": {
-        "content_object": 19, 
-        "tag": 5
+        "path": "0001",
+        "depth": 1,
+        "numchild": 1,
+        "title": "Root",
+        "slug": "root",
+        "content_type": [
+            "wagtailcore",
+            "page"
+        ],
+        "live": true,
+        "has_unpublished_changes": false,
+        "url_path": "/",
+        "owner": null,
+        "seo_title": "",
+        "show_in_menus": false,
+        "search_description": "",
+        "go_live_at": null,
+        "expire_at": null,
+        "expired": false,
+        "locked": false,
+        "first_published_at": null,
+        "latest_revision_created_at": null
     }
 },
 {
-    "pk": 5, 
-    "model": "app.blogpagetag", 
+    "model": "wagtailcore.page",
+    "pk": 3,
     "fields": {
-        "content_object": 16, 
-        "tag": 4
+        "path": "00010002",
+        "depth": 2,
+        "numchild": 1,
+        "title": "Home",
+        "slug": "home",
+        "content_type": [
+            "app",
+            "homepage"
+        ],
+        "live": true,
+        "has_unpublished_changes": false,
+        "url_path": "/home/",
+        "owner": [
+            "admin"
+        ],
+        "seo_title": "Papusa - Homepage",
+        "show_in_menus": false,
+        "search_description": "",
+        "go_live_at": null,
+        "expire_at": null,
+        "expired": false,
+        "locked": false,
+        "first_published_at": "2018-03-05T14:49:31.639Z",
+        "latest_revision_created_at": "2018-03-05T19:40:02.856Z"
     }
 },
 {
-    "pk": 6, 
-    "model": "app.blogpagetag", 
+    "model": "wagtailcore.page",
+    "pk": 4,
     "fields": {
-        "content_object": 16, 
-        "tag": 5
+        "path": "000100020001",
+        "depth": 3,
+        "numchild": 2,
+        "title": "Projects",
+        "slug": "projects",
+        "content_type": [
+            "app",
+            "standardindexpage"
+        ],
+        "live": true,
+        "has_unpublished_changes": false,
+        "url_path": "/home/projects/",
+        "owner": [
+            "admin"
+        ],
+        "seo_title": "",
+        "show_in_menus": true,
+        "search_description": "",
+        "go_live_at": null,
+        "expire_at": null,
+        "expired": false,
+        "locked": false,
+        "first_published_at": "2018-03-05T19:30:43.901Z",
+        "latest_revision_created_at": "2018-03-05T19:30:57.029Z"
     }
 },
 {
-    "pk": 7, 
-    "model": "app.blogpagetag", 
+    "model": "wagtailcore.page",
+    "pk": 5,
     "fields": {
-        "content_object": 18, 
-        "tag": 4
+        "path": "0001000200010001",
+        "depth": 4,
+        "numchild": 0,
+        "title": "Right Sidebar",
+        "slug": "right-sidebar",
+        "content_type": [
+            "app",
+            "standardpage"
+        ],
+        "live": true,
+        "has_unpublished_changes": false,
+        "url_path": "/home/projects/right-sidebar/",
+        "owner": [
+            "admin"
+        ],
+        "seo_title": "",
+        "show_in_menus": false,
+        "search_description": "A  page with a right sidebar",
+        "go_live_at": null,
+        "expire_at": null,
+        "expired": false,
+        "locked": false,
+        "first_published_at": "2018-03-05T19:32:04.165Z",
+        "latest_revision_created_at": "2018-03-05T19:35:19.583Z"
     }
 },
 {
-    "pk": 12, 
-    "model": "app.contactpage", 
+    "model": "wagtailcore.page",
+    "pk": 6,
     "fields": {
-        "body": "<p>Wagtails are slender, often colourful, ground-feeding insectivores of open country in the Old World. They are ground nesters, laying up to six speckled eggs at a time. Among their most conspicuous behaviours is a near constant tail wagging, a trait that has given the birds their common name. In spite of the ubiquity of the behaviour and observations of it, the reasons for it are poorly understood. It has been suggested that it may flush up prey, or that it may signal submissiveness to other wagtails. Recent studies have suggested instead that it is a signal of vigilance that may aid to deter potential predators.</p>", 
-        "city": "Birdland", 
-        "post_code": "W1A 1AA", 
-        "country": "Birdshire", 
-        "telephone": "012345 123456", 
-        "address_1": "21 Tweety Mansions", 
-        "address_2": "3 Bird Lane", 
-        "email": "foo@example.com", 
-        "feed_image": 7
+        "path": "0001000200010002",
+        "depth": 4,
+        "numchild": 0,
+        "title": "A Form",
+        "slug": "form",
+        "content_type": [
+            "app",
+            "formpage"
+        ],
+        "live": true,
+        "has_unpublished_changes": false,
+        "url_path": "/home/projects/form/",
+        "owner": [
+            "admin"
+        ],
+        "seo_title": "",
+        "show_in_menus": false,
+        "search_description": "It's a form",
+        "go_live_at": null,
+        "expire_at": null,
+        "expired": false,
+        "locked": false,
+        "first_published_at": "2018-03-05T19:41:02.131Z",
+        "latest_revision_created_at": "2018-03-05T19:41:16.665Z"
     }
 },
 {
-    "pk": 4, 
-    "model": "app.eventindexpage", 
+    "model": "wagtailcore.pagerevision",
+    "pk": 1,
     "fields": {
-        "intro": "<p>Three species are poly- or paraphyletic in the present taxonomical arrangement and either subspecies need to be reassigned and/or species split up. The Blue-headed Wagtail (AKA Yellow Wagtail and many other names), especially, has always been a taxonomical nightmare with over a dozen currently accepted subspecies and many more invalid ones. The two remaining \"monochrome\" species, Mekong and African Pied Wagtail may be closely related, or a most striking example of convergent evolution.</p>"
+        "page": 3,
+        "submitted_for_moderation": false,
+        "created_at": "2018-03-05T14:49:31.553Z",
+        "user": [
+            "admin"
+        ],
+        "content_json": "{\"related_links\": [], \"title\": \"Home\", \"first_published_at\": null, \"depth\": 2, \"pennant_items\": [], \"url_path\": \"/homep/\", \"search_description\": \"\", \"numchild\": 0, \"has_unpublished_changes\": false, \"live\": true, \"advert_placements\": [], \"owner\": 1, \"content_type\": 27, \"expired\": false, \"pk\": 3, \"banner_caption\": \"A Wagtail CMS Project\", \"carousel_items\": [], \"slug\": \"homep\", \"seo_title\": \"\", \"banner_image\": null, \"footer_promotions\": [], \"promotions\": [], \"latest_revision_created_at\": null, \"logo_image\": null, \"show_in_menus\": false, \"go_live_at\": null, \"path\": \"00010002\", \"locked\": false, \"logo_text\": \"Papusa\", \"body\": \"[{\\\"value\\\": \\\"Papusa Home Page\\\", \\\"type\\\": \\\"h2\\\"}]\", \"expire_at\": null, \"banner_header\": \"Welcome to Papusa\"}",
+        "approved_go_live_at": null
     }
 },
 {
-    "pk": 8, 
-    "model": "app.eventpage", 
+    "model": "wagtailcore.pagerevision",
+    "pk": 2,
     "fields": {
-        "body": "<p>Wagtails are slender, often colourful, ground-feeding insectivores of open country in the Old World. They are ground nesters, laying up to six speckled eggs at a time. Among their most conspicuous behaviours is a near constant tail wagging, a trait that has given the birds their common name. In spite of the ubiquity of the behaviour and observations of it, the reasons for it are poorly understood. It has been suggested that it may flush up prey, or that it may signal submissiveness to other wagtails. Recent studies have suggested instead that it is a signal of vigilance that may aid to deter potential predators.</p><p>At first glance, the wagtails appear to be divided into a yellow-bellied group and a white-bellied one, or one where the upper head is black and another where it is usually gray, but may be olive, yellow, or other colours. However, these are not evolutionary lineages; change of belly colour and increase of melanin have occurred independently several times in the wagtails, and the colour patterns which actually indicate relationships are more subtle.<br/></p>", 
-        "feed_image": 8, 
-        "date_from": "2018-02-28", 
-        "time_from": "11:30:00", 
-        "audience": "public", 
-        "cost": "\u00a330 per person, \u00a310 concessions", 
-        "location": "Royal Albert Hall", 
-        "date_to": "2018-03-02", 
-        "time_to": "19:00:00", 
-        "signup_link": "http://www.eventbrite.com/"
+        "page": 3,
+        "submitted_for_moderation": false,
+        "created_at": "2018-03-05T14:50:11.775Z",
+        "user": [
+            "admin"
+        ],
+        "content_json": "{\"related_links\": [], \"title\": \"Home\", \"first_published_at\": \"2018-03-05T14:49:31.639Z\", \"depth\": 2, \"pennant_items\": [], \"url_path\": \"/homep/\", \"search_description\": \"\", \"numchild\": 0, \"has_unpublished_changes\": false, \"live\": true, \"advert_placements\": [], \"owner\": 1, \"content_type\": 27, \"expired\": false, \"pk\": 3, \"banner_caption\": \"A Wagtail CMS Project\", \"carousel_items\": [], \"slug\": \"home\", \"seo_title\": \"Papusa - Homepage\", \"banner_image\": null, \"footer_promotions\": [], \"promotions\": [], \"latest_revision_created_at\": \"2018-03-05T14:49:31.553Z\", \"logo_image\": null, \"show_in_menus\": false, \"go_live_at\": null, \"path\": \"00010002\", \"locked\": false, \"logo_text\": \"Papusa\", \"body\": \"[{\\\"value\\\": \\\"Papusa Home Page\\\", \\\"type\\\": \\\"h2\\\"}]\", \"expire_at\": null, \"banner_header\": \"Welcome to Papusa\"}",
+        "approved_go_live_at": null
     }
 },
 {
-    "pk": 9, 
-    "model": "app.eventpage", 
+    "model": "wagtailcore.pagerevision",
+    "pk": 3,
     "fields": {
-        "body": "<p>Three species are poly- or paraphyletic in the present taxonomical arrangement and either subspecies need to be reassigned and/or species split up. The Blue-headed Wagtail (AKA Yellow Wagtail and many other names), especially, has always been a taxonomical nightmare with over a dozen currently accepted subspecies and many more invalid ones. The two remaining \"monochrome\" species, Mekong and African Pied Wagtail may be closely related, or a most striking example of convergent evolution</p>", 
-        "feed_image": 10, 
-        "date_from": "2018-04-26", 
-        "time_from": null, 
-        "audience": "private", 
-        "cost": "\u00a350", 
-        "location": "O2 Arena", 
-        "date_to": null, 
-        "time_to": null, 
-        "signup_link": ""
+        "page": 3,
+        "submitted_for_moderation": false,
+        "created_at": "2018-03-05T19:25:16.493Z",
+        "user": [
+            "admin"
+        ],
+        "content_json": "{\"related_links\": [], \"title\": \"Home\", \"first_published_at\": \"2018-03-05T14:49:31.639Z\", \"depth\": 2, \"pennant_items\": [], \"url_path\": \"/home/\", \"search_description\": \"\", \"numchild\": 0, \"has_unpublished_changes\": false, \"live\": true, \"advert_placements\": [], \"owner\": 1, \"content_type\": 27, \"expired\": false, \"pk\": 3, \"banner_caption\": \"A Wagtail CMS Project\", \"carousel_items\": [], \"slug\": \"home\", \"seo_title\": \"Papusa - Homepage\", \"banner_image\": 1, \"footer_promotions\": [], \"promotions\": [], \"latest_revision_created_at\": \"2018-03-05T14:50:11.775Z\", \"logo_image\": null, \"show_in_menus\": false, \"go_live_at\": null, \"path\": \"00010002\", \"locked\": false, \"logo_text\": \"Papusa\", \"body\": \"[{\\\"value\\\": \\\"Papusa Home Page\\\", \\\"type\\\": \\\"h2\\\"}]\", \"expire_at\": null, \"banner_header\": \"Welcome to Papusa\"}",
+        "approved_go_live_at": null
     }
 },
 {
-    "pk": 1, 
-    "model": "app.eventpagespeaker", 
+    "model": "wagtailcore.pagerevision",
+    "pk": 4,
     "fields": {
-        "last_name": "Joyce", 
-        "first_name": "James", 
-        "link_page": null, 
-        "image": 5, 
-        "link_external": "", 
-        "sort_order": 0, 
-        "link_document": null, 
-        "page": 8
+        "page": 4,
+        "submitted_for_moderation": false,
+        "created_at": "2018-03-05T19:30:43.823Z",
+        "user": [
+            "admin"
+        ],
+        "content_json": "{\"related_links\": [], \"title\": \"Projects\", \"first_published_at\": null, \"depth\": 3, \"url_path\": \"/home/projects/\", \"search_description\": \"\", \"numchild\": 0, \"has_unpublished_changes\": false, \"live\": true, \"owner\": 1, \"content_type\": 23, \"expired\": false, \"pk\": 4, \"advert_placements\": [], \"slug\": \"projects\", \"seo_title\": \"\", \"intro\": \"<p>Our list of projects<br/></p>\", \"latest_revision_created_at\": null, \"show_in_menus\": false, \"go_live_at\": null, \"path\": \"000100020001\", \"feed_image\": null, \"locked\": false, \"expire_at\": null}",
+        "approved_go_live_at": null
     }
 },
 {
-    "pk": 2, 
-    "model": "app.eventpagespeaker", 
+    "model": "wagtailcore.pagerevision",
+    "pk": 5,
     "fields": {
-        "last_name": "Mitchell", 
-        "first_name": "David", 
-        "link_page": null, 
-        "image": 6, 
-        "link_external": "", 
-        "sort_order": 1, 
-        "link_document": null, 
-        "page": 8
+        "page": 4,
+        "submitted_for_moderation": false,
+        "created_at": "2018-03-05T19:30:57.029Z",
+        "user": [
+            "admin"
+        ],
+        "content_json": "{\"related_links\": [], \"title\": \"Projects\", \"first_published_at\": \"2018-03-05T19:30:43.901Z\", \"depth\": 3, \"url_path\": \"/home/projects/\", \"search_description\": \"\", \"numchild\": 0, \"has_unpublished_changes\": false, \"live\": true, \"owner\": 1, \"content_type\": 23, \"expired\": false, \"pk\": 4, \"advert_placements\": [], \"slug\": \"projects\", \"seo_title\": \"\", \"intro\": \"<p>Our list of projects<br/></p>\", \"latest_revision_created_at\": \"2018-03-05T19:30:43.823Z\", \"show_in_menus\": true, \"go_live_at\": null, \"path\": \"000100020001\", \"feed_image\": null, \"locked\": false, \"expire_at\": null}",
+        "approved_go_live_at": null
     }
 },
 {
-    "pk": 2, 
-    "model": "app.homepage", 
+    "model": "wagtailcore.pagerevision",
+    "pk": 6,
     "fields": {
-        "body": "[{\"type\": \"intro\", \"value\": \"<p>Wagtails are slender, often colourful, ground-feeding insectivores of open country in the Old World.\\u00a0</p>\"}, {\"type\": \"paragraph\", \"value\": \"<p>They are ground nesters, laying up to six speckled eggs at a time. Among their most conspicuous behaviours is a near constant tail wagging, a trait that has given the birds their common name.\\u00a0</p>\"}, {\"type\": \"paragraph\", \"value\": \"<p>In spite of the ubiquity of the behaviour and observations of it, the reasons for it are poorly understood. It has been suggested that it may flush up prey, or that it may signal submissiveness to other wagtails. Recent studies have suggested instead that it is a signal of vigilance that may aid to deter potential predators.</p>\"}]"
+        "page": 5,
+        "submitted_for_moderation": false,
+        "created_at": "2018-03-05T19:32:04.046Z",
+        "user": [
+            "admin"
+        ],
+        "content_json": "{\"related_links\": [], \"title\": \"Right Sidebar\", \"first_published_at\": null, \"depth\": 4, \"url_path\": \"/home/projects/right-sidebar/\", \"search_description\": \"\", \"numchild\": 0, \"has_unpublished_changes\": false, \"live\": true, \"owner\": 1, \"content_type\": 30, \"expired\": false, \"sidebar\": \"right_sidebar\", \"pk\": 5, \"advert_placements\": [], \"carousel_items\": [], \"slug\": \"right-sidebar\", \"seo_title\": \"\", \"intro\": \"<p>A page with a right sidebar<br/></p>\", \"latest_revision_created_at\": null, \"show_in_menus\": false, \"go_live_at\": null, \"path\": \"0001000200010001\", \"feed_image\": null, \"locked\": false, \"body\": \"<p>This page has a right sidebar<br/></p>\", \"sidebar_items\": [{\"page\": 5, \"pk\": 1, \"title\": \"Sidebar\", \"sort_order\": 0, \"body\": \"A sidebar\", \"image\": 1, \"link_external\": \"\", \"link_page\": 3, \"link_document\": null, \"button_text\": \"Go home\", \"show_related_links\": false}], \"expire_at\": null}",
+        "approved_go_live_at": null
     }
 },
 {
-    "pk": 1, 
-    "model": "app.homepagecarouselitem", 
+    "model": "wagtailcore.pagerevision",
+    "pk": 7,
     "fields": {
-        "link_page": null, 
-        "embed_url": "", 
-        "image": 15, 
-        "link_external": "http://www.flickr.com/photos/lipkee/", 
-        "caption": "Grey wagtail by Lip Kee", 
-        "sort_order": 0, 
-        "link_document": null, 
-        "page": 2
+        "page": 5,
+        "submitted_for_moderation": false,
+        "created_at": "2018-03-05T19:32:44.144Z",
+        "user": [
+            "admin"
+        ],
+        "content_json": "{\"related_links\": [], \"title\": \"Right Sidebar\", \"first_published_at\": \"2018-03-05T19:32:04.165Z\", \"depth\": 4, \"url_path\": \"/home/projects/right-sidebar/\", \"search_description\": \"\", \"numchild\": 0, \"has_unpublished_changes\": false, \"live\": true, \"owner\": 1, \"content_type\": 30, \"expired\": false, \"sidebar\": \"right_sidebar\", \"pk\": 5, \"advert_placements\": [], \"carousel_items\": [], \"slug\": \"right-sidebar\", \"seo_title\": \"\", \"intro\": \"<p>A page with a right sidebar<br/></p>\", \"latest_revision_created_at\": \"2018-03-05T19:32:04.046Z\", \"show_in_menus\": false, \"go_live_at\": null, \"path\": \"0001000200010001\", \"feed_image\": 1, \"locked\": false, \"body\": \"<p>This page has a right sidebar<br/></p>\", \"sidebar_items\": [{\"page\": 5, \"pk\": 1, \"title\": \"Sidebar\", \"sort_order\": 0, \"body\": \"A sidebar\", \"image\": 1, \"link_external\": \"\", \"link_page\": 3, \"link_document\": null, \"button_text\": \"Go home\", \"show_related_links\": false}], \"expire_at\": null}",
+        "approved_go_live_at": null
     }
 },
 {
-    "pk": 2, 
-    "model": "app.homepagecarouselitem", 
+    "model": "wagtailcore.pagerevision",
+    "pk": 8,
     "fields": {
-        "link_page": null, 
-        "embed_url": "", 
-        "image": 12, 
-        "link_external": "http://www.flickr.com/photos/jim_bendon_1957/", 
-        "caption": "Wagtail sproing by Jim Bendon", 
-        "sort_order": 1, 
-        "link_document": null, 
-        "page": 2
+        "page": 5,
+        "submitted_for_moderation": false,
+        "created_at": "2018-03-05T19:33:55.728Z",
+        "user": [
+            "admin"
+        ],
+        "content_json": "{\"related_links\": [], \"title\": \"Right Sidebar\", \"first_published_at\": \"2018-03-05T19:32:04.165Z\", \"depth\": 4, \"url_path\": \"/home/projects/right-sidebar/\", \"search_description\": \"A  page with a right sidebar\", \"numchild\": 0, \"has_unpublished_changes\": false, \"live\": true, \"owner\": 1, \"content_type\": 30, \"expired\": false, \"sidebar\": \"right_sidebar\", \"pk\": 5, \"advert_placements\": [], \"carousel_items\": [], \"slug\": \"right-sidebar\", \"seo_title\": \"\", \"intro\": \"<p><br/></p>\", \"latest_revision_created_at\": \"2018-03-05T19:32:44.144Z\", \"show_in_menus\": false, \"go_live_at\": null, \"path\": \"0001000200010001\", \"feed_image\": 1, \"locked\": false, \"body\": \"<p>This page has a right sidebar<br/></p>\", \"sidebar_items\": [{\"page\": 5, \"pk\": 1, \"title\": \"Sidebar\", \"sort_order\": 0, \"body\": \"A sidebar\", \"image\": 1, \"link_external\": \"\", \"link_page\": 3, \"link_document\": null, \"button_text\": \"Go home\", \"show_related_links\": false}], \"expire_at\": null}",
+        "approved_go_live_at": null
     }
 },
 {
-    "pk": 3, 
-    "model": "app.homepagecarouselitem", 
+    "model": "wagtailcore.pagerevision",
+    "pk": 9,
     "fields": {
-        "link_page": null, 
-        "embed_url": "", 
-        "image": 11, 
-        "link_external": "http://www.flickr.com/photos/kjfnjy/", 
-        "caption": "Wagtail at Borovoye, Kazakhstan by Ken and Nyetta", 
-        "sort_order": 2, 
-        "link_document": null, 
-        "page": 2
+        "page": 5,
+        "submitted_for_moderation": false,
+        "created_at": "2018-03-05T19:34:57.222Z",
+        "user": [
+            "admin"
+        ],
+        "content_json": "{\"related_links\": [], \"title\": \"Right Sidebar\", \"first_published_at\": \"2018-03-05T19:32:04.165Z\", \"depth\": 4, \"url_path\": \"/home/projects/right-sidebar/\", \"search_description\": \"A  page with a right sidebar\", \"numchild\": 0, \"has_unpublished_changes\": false, \"live\": true, \"owner\": 1, \"content_type\": 30, \"expired\": false, \"sidebar\": \"right_sidebar\", \"pk\": 5, \"advert_placements\": [], \"carousel_items\": [], \"slug\": \"right-sidebar\", \"seo_title\": \"\", \"intro\": \"<p><br/></p>\", \"latest_revision_created_at\": \"2018-03-05T19:33:55.728Z\", \"show_in_menus\": false, \"go_live_at\": null, \"path\": \"0001000200010001\", \"feed_image\": 1, \"locked\": false, \"body\": \"<h2>Right Sidebar<br/></h2><p>This page has a right sidebar<br/></p>\", \"sidebar_items\": [{\"page\": 5, \"pk\": 1, \"title\": \"Sidebar\", \"sort_order\": 0, \"body\": \"A sidebar\", \"image\": 1, \"link_external\": \"\", \"link_page\": 3, \"link_document\": null, \"button_text\": \"Go home\", \"show_related_links\": false}], \"expire_at\": null}",
+        "approved_go_live_at": null
     }
 },
 {
-    "pk": 13, 
-    "model": "app.personpage", 
+    "model": "wagtailcore.pagerevision",
+    "pk": 10,
     "fields": {
-        "feed_image": 5, 
-        "city": "Birdland", 
-        "first_name": "James", 
-        "post_code": "W1A 1AA", 
-        "country": "Birdshire", 
-        "image": 5, 
-        "telephone": "012345 123456", 
-        "last_name": "Joyce", 
-        "address_1": "21 Tweety Mansions", 
-        "address_2": "3 Bird Lane", 
-        "intro": "<p>The origin of the genus appears to be in the general area of Eastern Siberia/Mongolia. Wagtails spread rapidly across Eurasia and dispersed to Africa in the Zanclean</p>", 
-        "email": "foo@example.com", 
-        "biography": "<p>Wagtails are slender, often colourful, ground-feeding insectivores of open country in the Old World. They are ground nesters, laying up to six speckled eggs at a time. Among their most conspicuous behaviours is a near constant tail wagging, a trait that has given the birds their common name. In spite of the ubiquity of the behaviour and observations of it, the reasons for it are poorly understood. It has been suggested that it may flush up prey, or that it may signal submissiveness to other wagtails. Recent studies have suggested instead that it is a signal of vigilance that may aid to deter potential predators.</p><p><br/></p><p>At first glance, the wagtails appear to be divided into a yellow-bellied group and a white-bellied one, or one where the upper head is black and another where it is usually gray, but may be olive, yellow, or other colours. However, these are not evolutionary lineages; change of belly colour and increase of melanin have occurred independently several times in the wagtails, and the colour patterns which actually indicate relationships are more subtle.<br/></p>"
+        "page": 5,
+        "submitted_for_moderation": false,
+        "created_at": "2018-03-05T19:35:19.583Z",
+        "user": [
+            "admin"
+        ],
+        "content_json": "{\"related_links\": [], \"title\": \"Right Sidebar\", \"first_published_at\": \"2018-03-05T19:32:04.165Z\", \"depth\": 4, \"url_path\": \"/home/projects/right-sidebar/\", \"search_description\": \"A  page with a right sidebar\", \"numchild\": 0, \"has_unpublished_changes\": false, \"live\": true, \"owner\": 1, \"content_type\": 30, \"expired\": false, \"sidebar\": \"right_sidebar\", \"pk\": 5, \"advert_placements\": [], \"carousel_items\": [], \"slug\": \"right-sidebar\", \"seo_title\": \"\", \"intro\": \"<p><br/></p>\", \"latest_revision_created_at\": \"2018-03-05T19:34:57.222Z\", \"show_in_menus\": false, \"go_live_at\": null, \"path\": \"0001000200010001\", \"feed_image\": 1, \"locked\": false, \"body\": \"<h2>Right Sidebar<br/></h2><p>This page has a right sidebar<br/></p>\", \"sidebar_items\": [{\"page\": 5, \"pk\": 1, \"title\": \"Sidebar\", \"sort_order\": 0, \"body\": \"A sidebar\", \"image\": 1, \"link_external\": \"\", \"link_page\": 3, \"link_document\": null, \"button_text\": \"Go home\", \"show_related_links\": false}], \"expire_at\": null}",
+        "approved_go_live_at": null
     }
 },
 {
-    "pk": 14, 
-    "model": "app.personpage", 
+    "model": "wagtailcore.pagerevision",
+    "pk": 11,
     "fields": {
-        "feed_image": 6, 
-        "city": "", 
-        "first_name": "David", 
-        "post_code": "W1A 1AA", 
-        "country": "", 
-        "image": 6, 
-        "telephone": "", 
-        "last_name": "Mitchell", 
-        "address_1": "", 
-        "address_2": "", 
-        "intro": "<p>Wagtails are slender, often colourful, ground-feeding insectivores of open country in the Old World.</p>", 
-        "email": "foo@example.com", 
-        "biography": "<p>Wagtails are slender, often colourful, ground-feeding insectivores of open country in the Old World. They are ground nesters, laying up to six speckled eggs at a time. Among their most conspicuous behaviours is a near constant tail wagging, a trait that has given the birds their common name. In spite of the ubiquity of the behaviour and observations of it, the reasons for it are poorly understood. It has been suggested that it may flush up prey, or that it may signal submissiveness to other wagtails. Recent studies have suggested instead that it is a signal of vigilance that may aid to deter potential predators.</p>"
+        "page": 3,
+        "submitted_for_moderation": false,
+        "created_at": "2018-03-05T19:40:02.856Z",
+        "user": [
+            "admin"
+        ],
+        "content_json": "{\"related_links\": [], \"title\": \"Home\", \"first_published_at\": \"2018-03-05T14:49:31.639Z\", \"depth\": 2, \"pennant_items\": [], \"url_path\": \"/home/\", \"search_description\": \"\", \"numchild\": 1, \"has_unpublished_changes\": false, \"live\": true, \"advert_placements\": [], \"owner\": 1, \"content_type\": 27, \"expired\": false, \"pk\": 3, \"banner_caption\": \"A Wagtail CMS Project\", \"carousel_items\": [], \"slug\": \"home\", \"seo_title\": \"Papusa - Homepage\", \"banner_image\": 1, \"footer_promotions\": [{\"page\": 3, \"pk\": null, \"sort_order\": 0, \"header\": \"Our Projects\", \"promotion_page\": 4}, {\"page\": 3, \"pk\": null, \"sort_order\": 1, \"header\": \"Our Projects\", \"promotion_page\": 4}], \"promotions\": [{\"page\": 3, \"pk\": null, \"sort_order\": 0, \"header\": \"Our Projects\", \"promotion_page\": 4}], \"latest_revision_created_at\": \"2018-03-05T19:25:16.493Z\", \"logo_image\": null, \"show_in_menus\": false, \"go_live_at\": null, \"path\": \"00010002\", \"locked\": false, \"logo_text\": \"Papusa\", \"body\": \"[{\\\"value\\\": \\\"Papusa Home Page\\\", \\\"type\\\": \\\"h2\\\"}]\", \"expire_at\": null, \"banner_header\": \"Welcome to Papusa\"}",
+        "approved_go_live_at": null
     }
 },
 {
-    "pk": 6, 
-    "model": "app.standardindexpage", 
+    "model": "wagtailcore.pagerevision",
+    "pk": 12,
     "fields": {
-        "feed_image": null, 
-        "intro": "<p>Three species are poly- or paraphyletic in the present taxonomical arrangement and either subspecies need to be reassigned and/or species split up. The Blue-headed Wagtail (AKA Yellow Wagtail and many other names), especially, has always been a taxonomical nightmare with over a dozen currently accepted subspecies and many more invalid ones. The two remaining \"monochrome\" species, Mekong and African Pied Wagtail may be closely related, or a most striking example of convergent evolution.</p>"
+        "page": 6,
+        "submitted_for_moderation": false,
+        "created_at": "2018-03-05T19:41:02.065Z",
+        "user": [
+            "admin"
+        ],
+        "content_json": "{\"title\": \"A Form\", \"intro\": \"<p>A Form<br/></p>\", \"first_published_at\": null, \"depth\": 4, \"url_path\": \"/home/projects/form/\", \"search_description\": \"\", \"numchild\": 0, \"has_unpublished_changes\": false, \"live\": true, \"owner\": 1, \"content_type\": 26, \"expired\": false, \"sidebar\": \"right_sidebar\", \"pk\": 6, \"advert_placements\": [], \"subject\": \"\", \"slug\": \"form\", \"seo_title\": \"\", \"from_address\": \"\", \"to_address\": \"\", \"latest_revision_created_at\": null, \"show_in_menus\": false, \"go_live_at\": null, \"path\": \"0001000200010002\", \"thank_you_text\": \"<p>Cheers</p>\", \"locked\": false, \"feed_image\": null, \"form_fields\": [{\"required\": true, \"pk\": 1, \"help_text\": \"\", \"default_value\": \"\", \"page\": 6, \"label\": \"A Form Field\", \"sort_order\": 0, \"field_type\": \"singleline\", \"choices\": \"\"}], \"sidebar_items\": [{\"page\": 6, \"pk\": 2, \"title\": \"It's a form\", \"sort_order\": 0, \"body\": \"Fill it\", \"image\": null, \"link_external\": \"\", \"link_page\": null, \"link_document\": null, \"button_text\": null, \"show_related_links\": false}], \"expire_at\": null}",
+        "approved_go_live_at": null
     }
 },
 {
-    "pk": 20, 
-    "model": "app.standardindexpage", 
+    "model": "wagtailcore.pagerevision",
+    "pk": 13,
     "fields": {
-        "feed_image": null, 
-        "intro": ""
+        "page": 6,
+        "submitted_for_moderation": false,
+        "created_at": "2018-03-05T19:41:16.665Z",
+        "user": [
+            "admin"
+        ],
+        "content_json": "{\"title\": \"A Form\", \"intro\": \"<p>A Form<br/></p>\", \"first_published_at\": \"2018-03-05T19:41:02.131Z\", \"depth\": 4, \"url_path\": \"/home/projects/form/\", \"search_description\": \"It's a form\", \"numchild\": 0, \"has_unpublished_changes\": false, \"live\": true, \"owner\": 1, \"content_type\": 26, \"expired\": false, \"sidebar\": \"right_sidebar\", \"pk\": 6, \"advert_placements\": [], \"subject\": \"\", \"slug\": \"form\", \"seo_title\": \"\", \"from_address\": \"\", \"to_address\": \"\", \"latest_revision_created_at\": \"2018-03-05T19:41:02.065Z\", \"show_in_menus\": false, \"go_live_at\": null, \"path\": \"0001000200010002\", \"thank_you_text\": \"<p>Cheers</p>\", \"locked\": false, \"feed_image\": 1, \"form_fields\": [{\"required\": true, \"pk\": 1, \"help_text\": \"\", \"default_value\": \"\", \"page\": 6, \"label\": \"A Form Field\", \"sort_order\": 0, \"field_type\": \"singleline\", \"choices\": \"\"}], \"sidebar_items\": [{\"page\": 6, \"pk\": 2, \"title\": \"It's a form\", \"sort_order\": 0, \"body\": \"Fill it\", \"image\": null, \"link_external\": \"\", \"link_page\": null, \"link_document\": null, \"button_text\": null, \"show_related_links\": false}], \"expire_at\": null}",
+        "approved_go_live_at": null
     }
 },
 {
-    "pk": 21, 
-    "model": "app.standardindexpage", 
+    "model": "wagtailcore.grouppagepermission",
+    "pk": 1,
     "fields": {
-        "feed_image": null, 
-        "intro": "<p>A listing of pages at the next level down</p>"
+        "group": [
+            "Moderators"
+        ],
+        "page": 1,
+        "permission_type": "add"
     }
 },
 {
-    "pk": 10, 
-    "model": "app.standardpage", 
+    "model": "wagtailcore.grouppagepermission",
+    "pk": 2,
     "fields": {
-        "body": "<p>Wagtails are slender, often colourful, ground-feeding insectivores of open country in the Old World. They are ground nesters, laying up to six speckled eggs at a time. Among their most conspicuous behaviours is a near constant tail wagging, a trait that has given the birds their common name. In spite of the ubiquity of the behaviour and observations of it, the reasons for it are poorly understood. It has been suggested that it may flush up prey, or that it may signal submissiveness to other wagtails. Recent studies have suggested instead that it is a signal of vigilance that may aid to deter potential predators.</p><p><br/></p><p>At first glance, the wagtails appear to be divided into a yellow-bellied group and a white-bellied one, or one where the upper head is black and another where it is usually gray, but may be olive, yellow, or other colours. However, these are not evolutionary lineages; change of belly colour and increase of melanin have occurred independently several times in the wagtails, and the colour patterns which actually indicate relationships are more subtle.<br/></p><p><br/></p><p>mtDNA cytochrome b and NADH dehydrogenase subunit 2 sequence data (Voelker, 2002) is of limited use: the suspicion that there is a superspecies of probably 3 white-bellied, black-throated wagtails is confirmed. Also, there is another superspecies in sub-Saharan Africa, three white-throated species with a black breast-band. The remaining five species are highly variable morphologically and their relationships with each other and with the two clades have not yet been satisfactorily explained.<br/></p><p><br/></p><p>The origin of the genus appears to be in the general area of Eastern Siberia/Mongolia. Wagtails spread rapidly across Eurasia and dispersed to Africa in the Zanclean (Early Pliocene) where the sub-Saharan lineage was later isolated. The African Pied Wagtail (and possibly the Mekong Wagtail) diverged prior to the massive radiation of the white-bellied black-throated and most yellow-bellied forms, all of which took place during the late Piacenzian (early Late Pliocene), c. 3 mya.<br/></p>", 
-        "feed_image": 12, 
-        "intro": "<p>At first glance, the wagtails appear to be divided into a yellow-bellied group and a white-bellied one, or one where the upper head is black and another where it is usually gray, but may be olive, yellow, or other colours. However, these are not evolutionary lineages; change of belly colour and increase of melanin have occurred independently several times in the wagtails, and the colour patterns which actually indicate relationships are more subtle.</p>"
+        "group": [
+            "Moderators"
+        ],
+        "page": 1,
+        "permission_type": "edit"
     }
 },
 {
-    "pk": 15, 
-    "model": "app.standardpage", 
+    "model": "wagtailcore.grouppagepermission",
+    "pk": 3,
     "fields": {
-        "body": "<h4>Wagtails are great</h4><p>At first glance, the wagtails appear to be divided into a yellow-bellied group and a white-bellied one, or one where the upper head is black and another where it is usually gray, but may be olive, yellow, or other colours. However, these are not evolutionary lineages; change of belly colour and increase of melanin have occurred independently several times in the wagtails, and the colour patterns which actually indicate relationships are more subtle.</p><p><embed alt=\"Wagtail Sproing by Jim Bendon\" embedtype=\"image\" format=\"left\" id=\"12\"/><br/></p><h4>Wagtails are pretty</h4><p>mtDNA cytochrome b and NADH dehydrogenase subunit 2 sequence data (Voelker, 2002) is of limited use: the suspicion that there is a superspecies of probably 3 white-bellied, black-throated wagtails is confirmed. Also, there is another superspecies in sub-Saharan Africa, three white-throated species with a black breast-band. The remaining five species are highly variable morphologically and their relationships with each other and with the two clades have not yet been satisfactorily explained.<br/></p><p><embed alt=\"Pied wagtail by Marie Hale\" embedtype=\"image\" format=\"right\" id=\"10\"/><br/></p><p>The origin of the genus appears to be in the general area of Eastern Siberia/Mongolia. Wagtails spread rapidly across Eurasia and dispersed to Africa in the Zanclean (Early Pliocene) where the sub-Saharan lineage was later isolated. The African Pied Wagtail (and possibly the Mekong Wagtail) diverged prior to the massive radiation of the white-bellied black-throated and most yellow-bellied forms, all of which took place during the late Piacenzian (early Late Pliocene), c. 3 mya.<br/></p><p>Three species are poly- or paraphyletic in the present taxonomical arrangement and either subspecies need to be reassigned and/or species split up. The Blue-headed Wagtail (AKA Yellow Wagtail and many other names), especially, has always been a taxonomical nightmare with over a dozen currently accepted subspecies and many more invalid ones. The two remaining \"monochrome\" species, Mekong and African Pied Wagtail may be closely related, or a most striking example of convergent evolution.<br/></p>", 
-        "feed_image": 10, 
-        "intro": "<p>The remaining five species are highly variable morphologically and their relationships with each other and with the two clades have not yet been satisfactorily explained.</p>"
+        "group": [
+            "Moderators"
+        ],
+        "page": 1,
+        "permission_type": "publish"
     }
 },
 {
-    "pk": 17, 
-    "model": "app.standardpage", 
+    "model": "wagtailcore.grouppagepermission",
+    "pk": 4,
     "fields": {
-        "body": "<br/><p>James Joyce,\u00a01915,\u00a0<a href=\"http://epc.buffalo.edu/authors/joyce/image/1915.jpg\">Cornell Joyce Collection</a>\u00a0by C. Ruf - public domain in the United States</p>\n<p>David Mitchell (b. 1969), British writer,\u00a0Warsaw (Poland), April 7, 2006, \u00a0<a href=\"http://www.mariuszkubik.pl/\">Mariusz Kubik</a>, GDFL licence</p><p>Wagtail,\u00a0October 14, 2012\u00a0by <a href=\"http://www.flickr.com/photos/markyharky/\">Mark Harkin</a>, \u00a0\u00a0<a href=\"http://creativecommons.org/licenses/by/2.0/\">Creative Commons</a></p><p>Wagtail, February 18th 2008, by <a href=\"http://www.flickr.com/photos/oufoufsworld/\">Joe Buckingham</a>, <a href=\"http://creativecommons.org/licenses/by/2.0/\">Creative Commons</a></p><p>Wagtail, August 4th 2009, by <a href=\"http://www.flickr.com/photos/fsphil/\">fs-phil</a>, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">Creative Commons</a></p><p>White wagtail, February 5th 2012, by <a href=\"http://www.flickr.com/photos/kkoshy/\">Koshy Koshy</a>, <a href=\"http://creativecommons.org/licenses/by/2.0/\">Creative Commons</a></p><p>Pied wagtail, January 20th 2013, by <a href=\"http://www.flickr.com/photos/15016964@N02/\">Marie Hale</a>, <a href=\"http://creativecommons.org/licenses/by/2.0/\">Creative Commons</a></p><p>Wagtail at Borovoye, Kazakhstan, June 16th 2012, by <a href=\"http://www.flickr.com/photos/kjfnjy/\">Ken and Nyetta</a>,\u00a0<a href=\"http://creativecommons.org/licenses/by/2.0/\">Creative Commons</a></p><p>Wagtail sproing, April 29 2012, by <a href=\"http://www.flickr.com/photos/jim_bendon_1957/\">Jim Bendon</a>, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">Creative Commons</a></p><p>Hopalong wagtail, June 17th 2008, by <a href=\"http://www.flickr.com/photos/ruthhb/\">Ruth Flickr</a>, <a href=\"http://creativecommons.org/licenses/by-nc-sa/2.0/\">Creative Commons</a></p><p>Wagtail collects insects, June 10th 2010, by <a href=\"http://www.flickr.com/photos/27126314@N03/\">Margrit</a>, <a href=\"http://creativecommons.org/licenses/by-nc-sa/2.0/\">Creative Commons</a></p><p>Grey wagtail, March 13th 2009, by <a href=\"http://www.flickr.com/photos/lipkee/\">Lip Kee</a>, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">Creative Commons</a></p>", 
-        "feed_image": 15, 
-        "intro": "<p>The following photos have been used in the sample wagtail app database</p>"
+        "group": [
+            "Editors"
+        ],
+        "page": 1,
+        "permission_type": "add"
     }
 },
 {
-    "pk": 22, 
-    "model": "app.standardpage", 
+    "model": "wagtailcore.grouppagepermission",
+    "pk": 5,
     "fields": {
-        "body": "<p>The origin of the genus appears to be in the general area of Eastern Siberia/Mongolia. Wagtails spread rapidly across Eurasia and dispersed to Africa in the Zanclean (Early Pliocene) where the sub-Saharan lineage was later isolated. The African Pied Wagtail (and possibly the Mekong Wagtail) diverged prior to the massive radiation of the white-bellied black-throated and most yellow-bellied forms, all of which took place during the late Piacenzian (early Late Pliocene), c. 3 mya.</p><p><span><br/></span></p><p><span>Three species are poly- or paraphyletic in the present taxonomical arrangement and either subspecies need to be reassigned and/or species split up. The Blue-headed Wagtail (AKA Yellow Wagtail and many other names), especially, has always been a taxonomical nightmare with over a dozen currently accepted subspecies and many more invalid ones. The two remaining \"monochrome\" species, Mekong and African Pied Wagtail may be closely related, or a most striking example of convergent evolution.</span><br/></p>", 
-        "feed_image": null, 
-        "intro": "<p>At first glance, the wagtails appear to be divided into a yellow-bellied group and a white-bellied one, or one where the upper head is black and another where it is usually gray, but may be olive, yellow, or other colours.</p>"
+        "group": [
+            "Editors"
+        ],
+        "page": 1,
+        "permission_type": "edit"
     }
 },
 {
-    "pk": 23, 
-    "model": "app.standardpage", 
+    "model": "wagtailcore.grouppagepermission",
+    "pk": 6,
     "fields": {
-        "body": "<p>The origin of the genus appears to be in the general area of Eastern Siberia/Mongolia. Wagtails spread rapidly across Eurasia and dispersed to Africa in the Zanclean (Early Pliocene) where the sub-Saharan lineage was later isolated. The African Pied Wagtail (and possibly the Mekong Wagtail) diverged prior to the massive radiation of the white-bellied black-throated and most yellow-bellied forms, all of which took place during the late Piacenzian (early Late Pliocene), c. 3 mya.</p><p><span><br/></span></p><p><span>Three species are poly- or paraphyletic in the present taxonomical arrangement and either subspecies need to be reassigned and/or species split up. The Blue-headed Wagtail (AKA Yellow Wagtail and many other names), especially, has always been a taxonomical nightmare with over a dozen currently accepted subspecies and many more invalid ones. The two remaining \"monochrome\" species, Mekong and African Pied Wagtail may be closely related, or a most striking example of convergent evolution.</span><br/></p>", 
-        "feed_image": null, 
-        "intro": "<p>The origin of the genus appears to be in the general area of Eastern Siberia/Mongolia. Wagtails spread rapidly across Eurasia and dispersed to Africa in the Zanclean (Early Pliocene) where the sub-Saharan lineage was later isolated. The African Pied Wagtail (and possibly the Mekong Wagtail) diverged prior to the massive radiation of the white-bellied black-throated and most yellow-bellied forms, all of which took place during the late Piacenzian (early Late Pliocene), c. 3 mya.</p>"
+        "group": [
+            "Moderators"
+        ],
+        "page": 1,
+        "permission_type": "lock"
     }
 },
 {
-    "pk": 1, 
-    "model": "app.standardpagecarouselitem", 
+    "model": "wagtailcore.collection",
+    "pk": 1,
     "fields": {
-        "link_page": null, 
-        "embed_url": "", 
-        "image": 13, 
-        "link_external": "http://www.flickr.com/photos/ruthhb/", 
-        "caption": "Hopalong wagtail by Ruth Flickr", 
-        "sort_order": 0, 
-        "link_document": null, 
-        "page": 10
+        "path": "0001",
+        "depth": 1,
+        "numchild": 0,
+        "name": "Root"
     }
 },
 {
-    "pk": 2, 
-    "model": "app.standardpagecarouselitem", 
+    "model": "wagtailcore.groupcollectionpermission",
+    "pk": 1,
     "fields": {
-        "link_page": null, 
-        "embed_url": "", 
-        "image": 15, 
-        "link_external": "http://www.flickr.com/photos/lipkee/", 
-        "caption": "Grey wagtail by Lip Kee", 
-        "sort_order": 1, 
-        "link_document": null, 
-        "page": 10
+        "group": [
+            "Editors"
+        ],
+        "collection": 1,
+        "permission": [
+            "add_image",
+            "wagtailimages",
+            "image"
+        ]
     }
 },
 {
-    "pk": 1, 
-    "model": "app.standardpagerelatedlink", 
+    "model": "wagtailcore.groupcollectionpermission",
+    "pk": 2,
     "fields": {
-        "link_page": 4, 
-        "title": "Internal link to events", 
-        "link_external": "", 
-        "sort_order": 0, 
-        "link_document": null, 
-        "page": 10
+        "group": [
+            "Moderators"
+        ],
+        "collection": 1,
+        "permission": [
+            "add_image",
+            "wagtailimages",
+            "image"
+        ]
     }
 },
 {
-    "pk": 2, 
-    "model": "app.standardpagerelatedlink", 
+    "model": "wagtailcore.groupcollectionpermission",
+    "pk": 3,
     "fields": {
-        "link_page": null, 
-        "title": "External link to google", 
-        "link_external": "http://www.google.com/", 
-        "sort_order": 1, 
-        "link_document": null, 
-        "page": 10
+        "group": [
+            "Editors"
+        ],
+        "collection": 1,
+        "permission": [
+            "change_image",
+            "wagtailimages",
+            "image"
+        ]
     }
 },
 {
-    "pk": 1, 
-    "model": "taggit.tag", 
+    "model": "wagtailcore.groupcollectionpermission",
+    "pk": 4,
     "fields": {
-        "name": "writers", 
-        "slug": "writers"
+        "group": [
+            "Moderators"
+        ],
+        "collection": 1,
+        "permission": [
+            "change_image",
+            "wagtailimages",
+            "image"
+        ]
     }
 },
 {
-    "pk": 2, 
-    "model": "taggit.tag", 
+    "model": "wagtailcore.groupcollectionpermission",
+    "pk": 5,
     "fields": {
-        "name": "people", 
-        "slug": "people"
+        "group": [
+            "Editors"
+        ],
+        "collection": 1,
+        "permission": [
+            "add_document",
+            "wagtaildocs",
+            "document"
+        ]
     }
 },
 {
-    "pk": 3, 
-    "model": "taggit.tag", 
+    "model": "wagtailcore.groupcollectionpermission",
+    "pk": 6,
     "fields": {
-        "name": "person", 
-        "slug": "person"
+        "group": [
+            "Moderators"
+        ],
+        "collection": 1,
+        "permission": [
+            "add_document",
+            "wagtaildocs",
+            "document"
+        ]
     }
 },
 {
-    "pk": 4, 
-    "model": "taggit.tag", 
+    "model": "wagtailcore.groupcollectionpermission",
+    "pk": 7,
     "fields": {
-        "name": "wagtail", 
-        "slug": "wagtail"
+        "group": [
+            "Editors"
+        ],
+        "collection": 1,
+        "permission": [
+            "change_document",
+            "wagtaildocs",
+            "document"
+        ]
     }
 },
 {
-    "pk": 5, 
-    "model": "taggit.tag", 
+    "model": "wagtailcore.groupcollectionpermission",
+    "pk": 8,
     "fields": {
-        "name": "bird", 
-        "slug": "bird"
+        "group": [
+            "Moderators"
+        ],
+        "collection": 1,
+        "permission": [
+            "change_document",
+            "wagtaildocs",
+            "document"
+        ]
     }
 },
 {
-    "pk": 6, 
-    "model": "taggit.tag", 
+    "model": "wagtailimages.image",
+    "pk": 1,
     "fields": {
-        "name": "writer", 
-        "slug": "writer"
+        "collection": 1,
+        "title": "Banner Image",
+        "file": "original_images/banner_image.jpg",
+        "width": 1200,
+        "height": 444,
+        "created_at": "2018-03-05T19:25:12.634Z",
+        "uploaded_by_user": [
+            "admin"
+        ],
+        "focal_point_x": null,
+        "focal_point_y": null,
+        "focal_point_width": null,
+        "focal_point_height": null,
+        "file_size": null
     }
 },
 {
+    "model": "wagtailimages.rendition",
+    "pk": 1,
     "fields": {
-        "email": "",
-        "username": "admin",
-        "last_name": "",
-        "last_login": "2015-01-15T10:15:46.942Z",
-        "is_superuser": true,
-        "is_active": true,
-        "groups": [],
-        "date_joined": "2015-01-15T10:13:48.969Z",
-        "is_staff": true,
-        "user_permissions": [],
-        "first_name": "",
-        "password": "pbkdf2_sha256$15000$hbmFjDx3rL12$lfU7j6YuVlKmUPChuiSXsXFhIgrejJGuWvWj5wxlRjQ="
-    },
-    "model": "auth.user",
-    "pk": 1
+        "filter_spec": "max-165x165",
+        "file": "images/banner_image.max-165x165.jpg",
+        "width": 165,
+        "height": 61,
+        "focal_point_key": "",
+        "image": 1
+    }
+},
+{
+    "model": "wagtailimages.rendition",
+    "pk": 2,
+    "fields": {
+        "filter_spec": "original",
+        "file": "images/banner_image.original.jpg",
+        "width": 1200,
+        "height": 444,
+        "focal_point_key": "",
+        "image": 1
+    }
 }
 ]
