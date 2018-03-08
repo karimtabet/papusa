@@ -72,8 +72,8 @@ def top_menu_children(context, parent):
 @register.inclusion_tag('app/tags/logo.html', takes_context=True)
 def logo(context):
     return {
-        'logo_image': get_site_root(context).specific.logo_image,
-        'logo_text': get_site_root(context).specific.logo_text,
+        'logo_image': getattr(get_site_root(context).specific, 'logo_image', ''),
+        'logo_text': getattr(get_site_root(context).specific, 'logo_text', ''),
         'request': context['request'],
     }
 
@@ -83,9 +83,14 @@ def logo(context):
     takes_context=True
 )
 def footer_promotions(context, count=2):
-    promos = get_site_root(context).specific.footer_promotions.all()
+    promos = getattr(get_site_root(context).specific, 'footer_promotions', None),
+    if type(promos) is tuple:
+        promos = promos[0]
+    if promos:
+        promos = promos.all()
+        promos[:count]
     return {
-        'footer_promotions': promos[:count],
+        'footer_promotions': promos if promos else '',
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
