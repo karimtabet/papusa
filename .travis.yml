@@ -12,9 +12,9 @@ script:
 notifications:
   email:
    - dev@karimtabet.com
+   - amxelemara@gmail.com
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
       make tag;
       make push;
     fi
-  
