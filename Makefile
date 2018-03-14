@@ -30,6 +30,7 @@ test: build start
 	echo "Running test script"
 	sleep 20
 	./acceptance_test.sh
+	docker exec -it papusa_web python3 manage.py test
 
 login:
 	echo "Logging in to Dockerhub"
