@@ -24,6 +24,8 @@ clean:
 	docker rm -f papusa_nginx papusa_web papusa_redis papusa_db
 	docker rmi karimtabet/papusa
 
+restart: clean start
+
 test: build start
 	echo "Running test script"
 	sleep 20
