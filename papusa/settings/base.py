@@ -92,9 +92,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    'wagtail.wagtailcore.middleware.SiteMiddleware',
+    'wagtail.core.middleware.SiteMiddleware',
 
-    'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 )
 
 ROOT_URLCONF = 'papusa.urls'
@@ -121,27 +121,27 @@ INSTALLED_APPS = (
 
     'app',
 
-    'wagtail.wagtailcore',
-    'wagtail.wagtailadmin',
-    'wagtail.wagtaildocs',
-    'wagtail.wagtailsnippets',
-    'wagtail.wagtailusers',
-    'wagtail.wagtailimages',
-    'wagtail.wagtailembeds',
-    'wagtail.wagtailsearch',
-    'wagtail.wagtailredirects',
-    'wagtail.wagtailforms',
-    'wagtail.wagtailsites',
-    'wagtail.contrib.wagtailapi',
+    'wagtail.core',
+    'wagtail.admin',
+    'wagtail.documents',
+    'wagtail.snippets',
+    'wagtail.users',
+    'wagtail.images',
+    'wagtail.embeds',
+    'wagtail.search',
+    'wagtail.contrib.redirects',
+    'wagtail.contrib.forms',
+    'wagtail.sites',
+    'wagtail.api.v2',
 )
 
-# Add wagtail.contrib.wagtailsearchpromotions to INSTALLED_APPS
+# Add wagtail.contrib.search_promotions to INSTALLED_APPS
 # if we're on Wagtail 1.1 or later.
 # NB this is a quick-and-dirty version check that won't work with
 # full generality (double-digit versions, alpha/beta releases)
-from wagtail.wagtailcore import __version__
+from wagtail.core import __version__
 if __version__.split('.') > ['1', '0']:
-    INSTALLED_APPS = list(INSTALLED_APPS) + ['wagtail.contrib.wagtailsearchpromotions']
+    INSTALLED_APPS = list(INSTALLED_APPS) + ['wagtail.contrib.search_promotions']
 
 
 EMAIL_SUBJECT_PREFIX = '[papusa] '
