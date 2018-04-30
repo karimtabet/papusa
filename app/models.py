@@ -90,12 +90,14 @@ class LinkFields(models.Model):
         null=True,
         blank=True,
         related_name='+',
+        on_delete=models.SET_NULL
     )
     link_document = models.ForeignKey(
         'wagtaildocs.Document',
         null=True,
         blank=True,
-        related_name='+'
+        related_name='+',
+        on_delete=models.SET_NULL
     )
 
     @property
@@ -270,7 +272,8 @@ class SidebarItem(LinkFields):
 
 class AdvertPlacement(models.Model):
     page = ParentalKey('wagtailcore.Page', related_name='advert_placements')
-    advert = models.ForeignKey('app.Advert', related_name='+')
+    advert = models.ForeignKey('app.Advert', related_name='+',
+                               on_delete=models.CASCADE)
 
 
 @register_snippet
@@ -280,7 +283,8 @@ class Advert(models.Model):
         'wagtailcore.Page',
         related_name='adverts',
         null=True,
-        blank=True
+        blank=True,
+        on_delete=models.SET_NULL
     )
     url = models.URLField(null=True, blank=True)
     text = models.CharField(max_length=255)
@@ -302,7 +306,8 @@ class Advert(models.Model):
 class Social(models.Model):
     image = models.ForeignKey(
         'wagtailimages.Image',
-        related_name='+'
+        related_name='+',
+        on_delete=models.CASCADE
     )
     name = models.CharField(max_length=255)
     url = models.CharField(max_length=255)
@@ -336,7 +341,8 @@ class HomePagePromotion(Orderable):
         'wagtailcore.Page',
         related_name='promotion_pages',
         null=True,
-        blank=True
+        blank=True,
+        on_delete=models.SET_NULL
     )
     header = models.CharField(max_length=24)
     page = ParentalKey('app.HomePage', related_name='promotions')
@@ -352,7 +358,8 @@ class HomePageFooterPromotion(Orderable):
         'wagtailcore.Page',
         related_name='footer_promotion_pages',
         null=True,
-        blank=True
+        blank=True,
+        on_delete=models.SET_NULL
     )
     header = models.CharField(max_length=24)
     page = ParentalKey('app.HomePage', related_name='footer_promotions')
