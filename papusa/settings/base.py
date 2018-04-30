@@ -78,7 +78,6 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
     'compressor.finders.CompressorFinder',
 )
 
@@ -129,19 +128,12 @@ INSTALLED_APPS = (
     'wagtail.images',
     'wagtail.embeds',
     'wagtail.search',
+    'wagtail.contrib.search_promotions',
     'wagtail.contrib.redirects',
     'wagtail.contrib.forms',
     'wagtail.sites',
     'wagtail.api.v2',
 )
-
-# Add wagtail.contrib.search_promotions to INSTALLED_APPS
-# if we're on Wagtail 1.1 or later.
-# NB this is a quick-and-dirty version check that won't work with
-# full generality (double-digit versions, alpha/beta releases)
-from wagtail.core import __version__
-if __version__.split('.') > ['1', '0']:
-    INSTALLED_APPS = list(INSTALLED_APPS) + ['wagtail.contrib.search_promotions']
 
 
 EMAIL_SUBJECT_PREFIX = '[papusa] '
