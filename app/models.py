@@ -6,19 +6,19 @@ from django.http import HttpResponse
 from django.utils.encoding import python_2_unicode_compatible
 from django import forms
 
-from wagtail.wagtailcore.models import Page, Orderable, ClusterableModel
-from wagtail.wagtailcore.fields import RichTextField, StreamField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, FieldRowPanel, MultiFieldPanel, \
+from wagtail.core.models import Page, Orderable, ClusterableModel
+from wagtail.core.fields import RichTextField, StreamField
+from wagtail.admin.edit_handlers import FieldPanel, FieldRowPanel, MultiFieldPanel, \
     InlinePanel, PageChooserPanel, StreamFieldPanel
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
-from wagtail.wagtailsnippets.models import register_snippet
-from wagtail.wagtailforms.models import AbstractEmailForm, AbstractFormField
-from wagtail.wagtailsearch import index
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.documents.edit_handlers import DocumentChooserPanel
+from wagtail.snippets.models import register_snippet
+from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
+from wagtail.search import index
 
-from wagtail.wagtailcore.blocks import TextBlock, StructBlock, StreamBlock, FieldBlock, CharBlock, RichTextBlock, RawHTMLBlock
-from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.wagtaildocs.blocks import DocumentChooserBlock
+from wagtail.core.blocks import TextBlock, StructBlock, StreamBlock, FieldBlock, CharBlock, RichTextBlock, RawHTMLBlock
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.documents.blocks import DocumentChooserBlock
 
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
@@ -89,13 +89,15 @@ class LinkFields(models.Model):
         'wagtailcore.Page',
         null=True,
         blank=True,
-        related_name='+'
+        related_name='+',
+        on_delete=models.SET_NULL
     )
     link_document = models.ForeignKey(
         'wagtaildocs.Document',
         null=True,
         blank=True,
-        related_name='+'
+        related_name='+',
+        on_delete=models.SET_NULL
     )
 
     @property
@@ -270,7 +272,8 @@ class SidebarItem(LinkFields):
 
 class AdvertPlacement(models.Model):
     page = ParentalKey('wagtailcore.Page', related_name='advert_placements')
-    advert = models.ForeignKey('app.Advert', related_name='+')
+    advert = models.ForeignKey('app.Advert', related_name='+',
+                               on_delete=models.CASCADE)
 
 
 @register_snippet
@@ -280,7 +283,8 @@ class Advert(models.Model):
         'wagtailcore.Page',
         related_name='adverts',
         null=True,
-        blank=True
+        blank=True,
+        on_delete=models.SET_NULL
     )
     url = models.URLField(null=True, blank=True)
     text = models.CharField(max_length=255)
@@ -302,7 +306,8 @@ class Advert(models.Model):
 class Social(models.Model):
     image = models.ForeignKey(
         'wagtailimages.Image',
-        related_name='+'
+        related_name='+',
+        on_delete=models.CASCADE
     )
     name = models.CharField(max_length=255)
     url = models.CharField(max_length=255)
@@ -336,7 +341,8 @@ class HomePagePromotion(Orderable):
         'wagtailcore.Page',
         related_name='promotion_pages',
         null=True,
-        blank=True
+        blank=True,
+        on_delete=models.SET_NULL
     )
     header = models.CharField(max_length=24)
     page = ParentalKey('app.HomePage', related_name='promotions')
@@ -352,7 +358,8 @@ class HomePageFooterPromotion(Orderable):
         'wagtailcore.Page',
         related_name='footer_promotion_pages',
         null=True,
-        blank=True
+        blank=True,
+        on_delete=models.SET_NULL
     )
     header = models.CharField(max_length=24)
     page = ParentalKey('app.HomePage', related_name='footer_promotions')
