@@ -6,8 +6,16 @@
     {% include "app/includes/intro.html" with intro=self.intro only %}
     <form action="{% pageurl self %}" method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        {% for field in form %}
+            <p>
+                <label for="id_{{ field.name }}">{{ field.label }}</label>
+                <span class="helptext">{{ field.help_text }}</span>
+                {{ field }}
+            </p>
+        {% endfor %}
         <input type="submit" value="Submit">
     </form>
 </article>
 {% endblock %}
+
+<!-- <p><label for="id_name">Name</label> <input name="name" id="id_name" required="" maxlength="255" type="text"> <span class="helptext">Your First Name followed by your Last Name</span></p> -->
