@@ -1157,12 +1157,24 @@
 
 /* Form */
 
+	form p {
+		width: 90%
+	}
+
+	.formnosidebar p {
+		width: 50%
+	}
+
 	form label {
 		display: block;
 		color: #252122;
 		font-weight: 400;
-		margin: 0 0 0.5em 0;
 		font-size: 1.3em;
+	}
+
+	form ul label {
+		margin: 0 0 0.3em 0;
+		font-size: 1em;
 	}
 
 	form input, form select, form textarea {
@@ -1174,20 +1186,20 @@
 		border-radius: 5px;
 		border: solid 1px #dddddd;
 		background: #fff;
-		width: 50%;
+		width: 100%
 	}
 
-		form input, form select:focus, form textarea:focus {
-			box-shadow: inset 0px 0px 1px 1px #43bff0;
-		}
+	form input, form select:focus, form textarea:focus {
+		box-shadow: inset 0px 0px 1px 1px #43bff0;
+	}
 
 	form input[type=submit] {
 		width: 25%;
 	}
 
 	form input[type=checkbox] {
-		display: contents;
 		width: 0;
+		display: inline;
 	}
 
 	form textarea {
@@ -1196,6 +1208,7 @@
 	}
 
 	form .helptext {
+		display: block;
 		font-size: .8em;
 	}
 
@@ -2579,6 +2592,16 @@
 					#banner header p {
 						font-size: 1.2em;
 					}
+
+		/* Form */
+
+			form p {
+				width: 100%
+			}
+
+			.formnosidebar p {
+				width: 100%
+			}
 
 		/* Copyright */
 
