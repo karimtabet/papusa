@@ -1,9 +1,9 @@
-Django==2.0.4
+Django==2.0.6
 gunicorn==19.8.1
 django-compressor>=2.2
 django-modelcluster>=4.1
 django-storages==1.6.6
-wagtail==2.0.1
+wagtail==2.1
 django-taggit>=0.22.2
 django-libsass>=0.7
 libsass==0.14.5
