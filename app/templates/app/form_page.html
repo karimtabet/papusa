@@ -4,7 +4,11 @@
 {% block content %}
 <article class="box post">
     {% include "app/includes/intro.html" with intro=self.intro only %}
-    <form action="{% pageurl self %}" method="POST">
+    {% if self.sidebar == "no_sidebar" %}
+        <form class="formnosidebar" action="{% pageurl self %}" method="POST">
+    {% else %}
+        <form action="{% pageurl self %}" method="POST">
+    {% endif %}
         {% csrf_token %}
         {% for field in form %}
             <p>

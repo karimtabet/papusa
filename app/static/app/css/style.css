@@ -1157,6 +1157,14 @@
 
 /* Form */
 
+	form p {
+		width: 90%
+	}
+
+	.formnosidebar p {
+		width: 50%
+	}
+
 	form label {
 		display: block;
 		color: #252122;
@@ -1178,7 +1186,7 @@
 		border-radius: 5px;
 		border: solid 1px #dddddd;
 		background: #fff;
-		width: 50%;
+		width: 100%
 	}
 
 	form input, form select:focus, form textarea:focus {
@@ -2584,6 +2592,16 @@
 					#banner header p {
 						font-size: 1.2em;
 					}
+
+		/* Form */
+
+			form p {
+				width: 100%
+			}
+
+			.formnosidebar p {
+				width: 100%
+			}
 
 		/* Copyright */
 
