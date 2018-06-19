@@ -1,6 +1,5 @@
 #!/bin/sh
 sed -i "1s/.*/from .production import \*/" papusa/settings/__init__.py # Use production settings
-python3 manage.py makemigrations app
 python3 manage.py migrate                  # Apply database migrations
 python3 manage.py collectstatic --noinput  # Collect static files
 
