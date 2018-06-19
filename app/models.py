@@ -9,7 +9,8 @@ from django import forms
 from wagtail.core.models import Page, Orderable, ClusterableModel
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.admin.edit_handlers import FieldPanel, FieldRowPanel, MultiFieldPanel, \
-    InlinePanel, PageChooserPanel, StreamFieldPanel
+    InlinePanel, PageChooserPanel, StreamFieldPanel, HelpPanel
+from wagtail.admin.edit_handlers import TabbedInterface, ObjectList
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.snippets.models import register_snippet
@@ -324,10 +325,6 @@ class Social(models.Model):
 
 # Home Page
 
-class HomePageCarouselItem(Orderable, CarouselItem):
-    page = ParentalKey('app.HomePage', related_name='carousel_items')
-
-
 class HomePagePennantItem(Orderable, PennantItem):
     page = ParentalKey('app.HomePage', related_name='pennant_items')
 
@@ -388,34 +385,57 @@ class HomePage(Page):
     )
     banner_header = models.CharField(max_length=48, null=True, blank=True)
     banner_caption = models.CharField(max_length=256, null=True, blank=True)
-    body = StreamField(CustomStreamBlock())
     search_fields = Page.search_fields + [
         index.SearchField('body'),
     ]
 
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        ImageChooserPanel('banner_image'),
+        FieldPanel('banner_header'),
+        FieldPanel('banner_caption'),
+        InlinePanel('pennant_items', label='Penant items'),
+        InlinePanel('promotions', label='Promotions')
+    ]
+
+    logo_panels = [
+        HelpPanel('''<h3 style="font-weight: bold">
+                     Customise the logo text or add an image
+                     </h3>\n
+                     <p>
+                     All child pages will inherit these settings
+                     </p>'''),
+        FieldPanel('logo_text'),
+        ImageChooserPanel('logo_image'),
+    ]
+
+    footer_content_panels = [
+        HelpPanel('''<h3 style="font-weight: bold">
+                     Customise the footer with promotions of child pages
+                     and contact details
+                     </h3>\n
+                     <p>
+                     All child pages will inherit these settings
+                     </p>'''),
+        InlinePanel('footer_promotions', label='Footer Promotions'),
+    ]
+
+    promote_panels = Page.promote_panels
+
+    edit_handler = TabbedInterface([
+        ObjectList(content_panels, heading='Content'),
+        ObjectList(logo_panels, heading='Logo'),
+        ObjectList(footer_content_panels, heading='Footer'),
+        ObjectList(Page.promote_panels, heading='Promote'),
+        ObjectList(Page.settings_panels, heading='Settings',
+                   classname="settings"),
+    ])
+
     class Meta:
         verbose_name = "Homepage"
 
-HomePage.content_panels = [
-    FieldPanel('title', classname="full title"),
-    StreamFieldPanel('body'),
-    FieldPanel('logo_text'),
-    ImageChooserPanel('logo_image'),
-    ImageChooserPanel('banner_image'),
-    FieldPanel('banner_header'),
-    FieldPanel('banner_caption'),
-    InlinePanel('carousel_items', label="Carousel items"),
-    InlinePanel('pennant_items', label='Penant items'),
-    InlinePanel('promotions', label='Promotions'),
-    InlinePanel('footer_promotions', label='Footer Promotions'),
-    InlinePanel('related_links', label="Related links"),
-]
-
-HomePage.promote_panels = Page.promote_panels
-
 
 # Standard index page
-
 
 class StandardIndexPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('app.StandardIndexPage', related_name='related_links')
