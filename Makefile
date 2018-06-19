@@ -28,7 +28,7 @@ restart: clean start
 
 test: build start
 	echo "Running test script"
-	sleep 20
+	sleep 30
 	./acceptance_test.sh
 
 login:
