@@ -9,7 +9,6 @@
 {% block header %}
     {{ block.super }}
     {% include "app/includes/banner.html" with banner_image=self.banner_image banner_header=self.banner_header banner_caption=self.banner_caption only %}
-    {% include "app/includes/carousel.html" with carousel_items=self.carousel_items.all only %}
     {% include "app/includes/pennants.html" with pennant_items=self.pennant_items.all only %}
     <footer>
         <ul class="actions">
@@ -21,7 +20,4 @@
 {% block layout %}
 {% include "app/includes/promotions.html" with promotions=self.promotions.all only %}
 {% endblock %}
-
 {% include "app/includes/banner.html" with feed_image=self.feed_image only %}
- 
-{% include "app/includes/related_links.html" with related_links=self.related_links.all only %}
