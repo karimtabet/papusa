@@ -1,0 +1,2 @@
+#!/bin/bash
+docker exec creativeopportunities python3 manage.py dumpdata --natural-foreign --natural-primary --indent=4 -e sessions -e contenttypes -e auth.Permission > co_data__`date -u +"%Y-%m-%dT%H:%M:%SZ"`.json

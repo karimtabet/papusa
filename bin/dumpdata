@@ -1,0 +1,1 @@
+python3 manage.py dumpdata --natural-foreign --natural-primary --indent=4 -e sessions -e contenttypes -e auth.Permission -e wagtailsites
