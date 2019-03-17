@@ -12,7 +12,6 @@ Initialise and activate a virtualenv:
 ```
 virtualenv -p python3 env && source env/bin/activate
 ```
-
 Install dependencies:
 ```
 pip install -r requirements.txt
@@ -39,3 +38,8 @@ Access the admin panel by visitin http://127.0.0.1:8000/admin/.
 
 A default admin user is set up with credentials **admin:admin**.
 
+## Todo
+* Configure redis
+* Configure elasticsearch
+* Add search bar
+* Customisable "Find out more" button
