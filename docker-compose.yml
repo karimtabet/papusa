@@ -1,4 +1,4 @@
-version: '2.1'  
+version: '3'  
 services:
 
   nginx:
@@ -8,8 +8,6 @@ services:
       - "8000:8000"
     volumes:
       - ./nginx:/etc/nginx/conf.d
-    volumes_from:
-      - web
     depends_on:
       - web
 
@@ -18,10 +16,8 @@ services:
     image: karimtabet/papusa
     container_name: papusa_web
     depends_on:
-      postgres:
-        condition: service_healthy
-      redis:
-        condition: service_started
+      - postgres
+      - redis
     links:
       - "postgres:db"
     expose:
