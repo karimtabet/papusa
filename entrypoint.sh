@@ -14,6 +14,7 @@ exec gunicorn papusa.wsgi:application \
     --name papusa \
     --bind 0.0.0.0:8000 \
     --workers 3 \
+    -t 3600
     --log-level=info \
     --log-file=/srv/logs/gunicorn.log \
     --access-logfile=/srv/logs/access.log \
