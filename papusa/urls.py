@@ -31,3 +31,5 @@ if settings.DEBUG:
     urlpatterns += [
         url(r'^favicon\.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'app/images/favicon.ico'))
     ]
+    import debug_toolbar
+    urlpatterns += [url(r'^__debug__/', include(debug_toolbar.urls))]
